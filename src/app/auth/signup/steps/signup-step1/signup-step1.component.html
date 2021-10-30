@@ -12,12 +12,11 @@
       formControlName="email"
       required
     />
-    <mat-error
-      *ngIf="
-        !signUpForm.get('userData.email')?.valid &&
-        signUpForm.get('userData.email')?.touched
-      "
+    <mat-error *ngIf="signUpForm.get('userData.email')?.hasError('email')"
       >Please enter a valid email</mat-error
+    >
+    <mat-error *ngIf="signUpForm.get('userData.email')?.hasError('required')"
+      >This field is required</mat-error
     >
   </mat-form-field>
   <mat-form-field formGroupName="userData">
@@ -28,11 +27,7 @@
       formControlName="password"
       required
     />
-    <mat-error
-      *ngIf="
-        !signUpForm.get('userData.password')?.valid &&
-        signUpForm.get('userData.password')?.touched
-      "
+    <mat-error *ngIf="signUpForm.get('userData.password')?.hasError('required')"
       >This field is required</mat-error
     >
   </mat-form-field>
