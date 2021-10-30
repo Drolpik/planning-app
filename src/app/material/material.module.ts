@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatStepperModule } from '@angular/material/stepper';
 
-const materials = [MatSidenavModule, MatToolbarModule];
+const materials = [
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatStepperModule
+];
 
 @NgModule({
   declarations: [],
