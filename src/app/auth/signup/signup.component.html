@@ -1,22 +1,24 @@
 <form [formGroup]="signUpForm">
   <mat-horizontal-stepper labelPosition="bottom" #stepper linear>
     <mat-step
-      formGroupName="userData"
-      [stepControl]="signUpForm.get('userData')!"
+      formGroupName="userAccount"
+      [stepControl]="signUpForm.get('userAccount')!"
     >
       <ng-template matStepLabel>Account</ng-template>
       <app-signup-step1 [signUpForm]="signUpForm"></app-signup-step1>
     </mat-step>
+
     <mat-step
-      formGroupName="parameters"
-      [stepControl]="signUpForm?.get('parameters')!"
+      formGroupName="userPersonal"
+      [stepControl]="signUpForm?.get('userPersonal')!"
     >
-      <ng-template matStepLabel>Parameters</ng-template>
-      <app-signup-step2></app-signup-step2>
+      <ng-template matStepLabel>Personal</ng-template>
+      <app-signup-step2 [signUpForm]="signUpForm"></app-signup-step2>
     </mat-step>
+
     <mat-step>
       <ng-template matStepLabel>Summary</ng-template>
-      <app-signup-step3></app-signup-step3>
+      <app-signup-step3> [signUpForm]="signUpForm"</app-signup-step3>
     </mat-step>
   </mat-horizontal-stepper>
 </form>

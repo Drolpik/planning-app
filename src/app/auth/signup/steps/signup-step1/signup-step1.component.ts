@@ -8,11 +8,4 @@ import { FormGroup } from '@angular/forms';
 })
 export class SignupStep1Component {
   @Input() signUpForm: FormGroup;
-
-  step1Submitted() {
-    this.signUpForm.get('userData')?.get('email')?.markAsTouched();
-    this.signUpForm.get('userData')?.get('email')?.updateValueAndValidity();
-    this.signUpForm.get('userData')?.get('password')?.markAsTouched();
-    this.signUpForm.get('userData')?.get('password')?.updateValueAndValidity();
-  }
 }

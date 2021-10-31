@@ -16,6 +16,7 @@ import { HomeComponent } from './home/home.component';
 import { SignupStep1Component } from './auth/signup/steps/signup-step1/signup-step1.component';
 import { SignupStep2Component } from './auth/signup/steps/signup-step2/signup-step2.component';
 import { SignupStep3Component } from './auth/signup/steps/signup-step3/signup-step3.component';
+import { StepFormContainerComponent } from './auth/signup/steps/step-form-container/step-form-container.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { SignupStep3Component } from './auth/signup/steps/signup-step3/signup-st
     HomeComponent,
     SignupStep1Component,
     SignupStep2Component,
-    SignupStep3Component
+    SignupStep3Component,
+    StepFormContainerComponent
   ],
   imports: [
     MaterialModule,

@@ -1,1 +1,89 @@
-<p>signup-step2 works!</p>
+<app-step-form-container>
+  <div
+    [formGroup]="signUpForm"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+  >
+    <mat-form-field class="birth-field" formGroupName="userPersonal">
+      <mat-label>Your date of birth</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        placeholder="m/d/yyyy"
+        formControlName="dateOfBirth"
+        required
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error
+        *ngIf="signUpForm.get('userPersonal.dateOfBirth')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <div class="height-container" formGroupName="userPersonal">
+      <mat-form-field class="height-field">
+        <input
+          type="number"
+          matInput
+          placeholder="Your height"
+          formControlName="height"
+          min="100"
+          max="250"
+          required
+        />
+        <mat-error
+          *ngIf="signUpForm.get('userPersonal.height')?.hasError('required')"
+          >This field is required</mat-error
+        >
+        <mat-error
+          *ngIf="
+            signUpForm.get('userPersonal.height')?.hasError('min') ||
+            signUpForm.get('userPersonal.height')?.hasError('max')
+          "
+          >Please enter a valid height</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="weight-container" formGroupName="userPersonal">
+      <mat-form-field class="weight-field">
+        <input
+          type="number"
+          matInput
+          placeholder="Your weight"
+          formControlName="weight"
+          min="20"
+          max="300"
+          required
+        />
+        <mat-error
+          *ngIf="signUpForm.get('userPersonal.weight')?.hasError('required')"
+          >This field is required</mat-error
+        >
+        <mat-error
+          *ngIf="
+            signUpForm.get('userPersonal.weight')?.hasError('min') ||
+            signUpForm.get('userPersonal.weight')?.hasError('max')
+          "
+          >Please enter a valid weight</mat-error
+        >
+      </mat-form-field>
+    </div>
+
+    <div class="weight-container" formGroupName="userPersonal">
+      <mat-radio-group formControlName="gender" aria-label="Select an option">
+        <mat-radio-button value="1">Male</mat-radio-button>
+        <mat-radio-button value="2">Female</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="button-container">
+      <button class="back-button" mat-button matStepperPrevious>Back</button>
+      <button class="next-button" mat-button color="primary" matStepperNext>
+        Next
+      </button>
+    </div>
+  </div>
+</app-step-form-container>

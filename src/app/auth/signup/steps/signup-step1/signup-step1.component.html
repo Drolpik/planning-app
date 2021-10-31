@@ -1,37 +1,55 @@
-<div
-  [formGroup]="signUpForm"
-  fxLayout="column"
-  fxLayoutAlign="center center"
-  fxLayoutGap="10px"
->
-  <mat-form-field formGroupName="userData">
-    <input
-      type="email"
-      matInput
-      placeholder="Your email"
-      formControlName="email"
-      required
-    />
-    <mat-error *ngIf="signUpForm.get('userData.email')?.hasError('email')"
-      >Please enter a valid email</mat-error
-    >
-    <mat-error *ngIf="signUpForm.get('userData.email')?.hasError('required')"
-      >This field is required</mat-error
-    >
-  </mat-form-field>
-  <mat-form-field formGroupName="userData">
-    <input
-      type="password"
-      matInput
-      placeholder="Your password"
-      formControlName="password"
-      required
-    />
-    <mat-error *ngIf="signUpForm.get('userData.password')?.hasError('required')"
-      >This field is required</mat-error
-    >
-  </mat-form-field>
-  <button type="button" mat-button matStepperNext (click)="step1Submitted()">
-    Next
-  </button>
-</div>
+<app-step-form-container
+  ><div
+    [formGroup]="signUpForm"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+  >
+    <mat-form-field formGroupName="userAccount">
+      <input
+        type="email"
+        matInput
+        placeholder="Your email"
+        formControlName="email"
+        required
+      />
+      <mat-error *ngIf="signUpForm.get('userAccount.email')?.hasError('email')"
+        >Please enter a valid email</mat-error
+      >
+      <mat-error
+        *ngIf="signUpForm.get('userAccount.email')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field formGroupName="userAccount">
+      <input
+        type="password"
+        matInput
+        placeholder="Your password"
+        formControlName="password"
+        required
+      />
+      <mat-error
+        *ngIf="signUpForm.get('userAccount.password')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field formGroupName="userAccount">
+      <input
+        type="text"
+        matInput
+        placeholder="Your name"
+        formControlName="name"
+        required
+      />
+      <mat-error
+        *ngIf="signUpForm.get('userAccount.name')?.hasError('required')"
+        >This field is required</mat-error
+      >
+    </mat-form-field>
+
+    <button mat-button color="primary" matStepperNext>Next</button>
+  </div>
+</app-step-form-container>
