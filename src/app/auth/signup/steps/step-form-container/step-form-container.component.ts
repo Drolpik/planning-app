@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-step-form-container',
   templateUrl: './step-form-container.component.html',
   styleUrls: ['./step-form-container.component.scss']
 })
-export class StepFormContainerComponent {}
+export class StepFormContainerComponent {
+  @Input() formSectionName: string;
+}

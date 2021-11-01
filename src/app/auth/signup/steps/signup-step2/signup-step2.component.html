@@ -1,4 +1,4 @@
-<app-step-form-container>
+<app-step-form-container [formSectionName]="'Personal'">
   <div
     [formGroup]="signUpForm"
     fxLayout="column"
@@ -10,7 +10,7 @@
       <input
         matInput
         [matDatepicker]="picker"
-        placeholder="m/d/yyyy"
+        placeholder="mm/dd/yyyy"
         formControlName="dateOfBirth"
         required
       />
@@ -74,8 +74,8 @@
 
     <div class="weight-container" formGroupName="userPersonal">
       <mat-radio-group formControlName="gender" aria-label="Select an option">
-        <mat-radio-button value="1">Male</mat-radio-button>
-        <mat-radio-button value="2">Female</mat-radio-button>
+        <mat-radio-button value="Male">Male</mat-radio-button>
+        <mat-radio-button value="Female">Female</mat-radio-button>
       </mat-radio-group>
     </div>
 

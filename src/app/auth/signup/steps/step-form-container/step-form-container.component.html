@@ -1,5 +1,8 @@
-<div fxLayoutAlign="center center">
-  <mat-card>
-    <ng-content></ng-content>
-  </mat-card>
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div class="container">
+    <h1 class="header">{{ formSectionName }}</h1>
+    <mat-card>
+      <ng-content></ng-content>
+    </mat-card>
+  </div>
 </div>

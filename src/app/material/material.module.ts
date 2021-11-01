@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatListModule } from '@angular/material/list';
 
 const materials = [
   MatFormFieldModule,
@@ -18,7 +19,8 @@ const materials = [
   MatCardModule,
   MatRadioModule,
   MatDatepickerModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatListModule
 ];
 
 @NgModule({
