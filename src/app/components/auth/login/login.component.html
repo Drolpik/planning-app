@@ -1,1 +1,51 @@
-<p>login works!</p>
+<div class="login-container">
+  <app-form-container formSectionName="Login">
+    <div
+      [formGroup]="loginForm"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+    >
+      <mat-form-field>
+        <input
+          type="email"
+          matInput
+          placeholder="Your email"
+          formControlName="login"
+          required
+        />
+        <mat-error *ngIf="loginForm.get('login')?.hasError('email')"
+          >Please enter a valid email</mat-error
+        >
+        <mat-error *ngIf="loginForm.get('login')?.hasError('required')"
+          >This field is required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          type="password"
+          matInput
+          placeholder="Your password"
+          formControlName="password"
+          required
+        />
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')"
+          >This field is required</mat-error
+        >
+      </mat-form-field>
+
+      <div class="button-container" fxLayoutAlign="center center">
+        <button
+          type="submit"
+          class="submit-button"
+          mat-raised-button
+          color="primary"
+          (click)="submit()"
+        >
+          Login
+        </button>
+      </div>
+    </div>
+  </app-form-container>
+</div>
