@@ -8,15 +8,15 @@ import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { LoginComponent } from './auth/login/login.component';
-import { PhysicalExerciseComponent } from './physical-exercise/physical-exercise.component';
-import { MealsComponent } from './meals/meals.component';
-import { HomeComponent } from './home/home.component';
-import { SignupStep1Component } from './auth/signup/steps/signup-step1/signup-step1.component';
-import { SignupStep2Component } from './auth/signup/steps/signup-step2/signup-step2.component';
-import { SignupStep3Component } from './auth/signup/steps/signup-step3/signup-step3.component';
-import { StepFormContainerComponent } from './auth/signup/steps/step-form-container/step-form-container.component';
+import { SignupComponent } from './components/auth/signup/signup.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { PhysicalExerciseComponent } from './components/physical-exercise/physical-exercise.component';
+import { MealsComponent } from './components/meals/meals.component';
+import { HomeComponent } from './components/home/home.component';
+import { SignupStep1Component } from './components/auth/signup/steps/signup-step1/signup-step1.component';
+import { SignupStep2Component } from './components/auth/signup/steps/signup-step2/signup-step2.component';
+import { SignupStep3Component } from './components/auth/signup/steps/signup-step3/signup-step3.component';
+import { FormContainerComponent } from './components/commons/form-container/form-container.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { StepFormContainerComponent } from './auth/signup/steps/step-form-contai
     SignupStep1Component,
     SignupStep2Component,
     SignupStep3Component,
-    StepFormContainerComponent
+    FormContainerComponent
   ],
   imports: [
     MaterialModule,

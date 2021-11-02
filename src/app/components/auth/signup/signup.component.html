@@ -1,5 +1,5 @@
 <form [formGroup]="signUpForm">
-  <mat-horizontal-stepper labelPosition="bottom" #stepper linear>
+  <mat-horizontal-stepper gdGap="20px" labelPosition="bottom" #stepper linear>
     <mat-step
       formGroupName="userAccount"
       [stepControl]="signUpForm.get('userAccount')!"
