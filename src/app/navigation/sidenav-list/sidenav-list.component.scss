@@ -1,0 +1,14 @@
+a {
+  text-decoration: none;
+  color: white;
+
+  &:hover,
+  &:active {
+    color: lightgray;
+  }
+}
+
+.nav-item-label {
+  display: inline-block;
+  padding-left: 6px;
+}

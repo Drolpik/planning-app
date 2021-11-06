@@ -17,6 +17,8 @@ import { SignupStep1Component } from './components/auth/signup/steps/signup-step
 import { SignupStep2Component } from './components/auth/signup/steps/signup-step2/signup-step2.component';
 import { SignupStep3Component } from './components/auth/signup/steps/signup-step3/signup-step3.component';
 import { FormContainerComponent } from './components/commons/form-container/form-container.component';
+import { HeaderComponent } from './navigation/header/header.component';
+import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { FormContainerComponent } from './components/commons/form-container/form
     SignupStep1Component,
     SignupStep2Component,
     SignupStep3Component,
-    FormContainerComponent
+    FormContainerComponent,
+    HeaderComponent,
+    SidenavListComponent
   ],
   imports: [
     MaterialModule,

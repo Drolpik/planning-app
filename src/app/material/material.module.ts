@@ -10,6 +10,9 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
 
 const materials = [
   MatFormFieldModule,
@@ -20,7 +23,10 @@ const materials = [
   MatRadioModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatListModule
+  MatListModule,
+  MatSidenavModule,
+  MatToolbarModule,
+  MatIconModule
 ];
 
 @NgModule({
