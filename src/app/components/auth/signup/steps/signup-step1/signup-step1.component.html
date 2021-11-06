@@ -13,11 +13,11 @@
         formControlName="email"
         required
       />
-      <mat-error *ngIf="signUpForm.get('userAccount.email')?.hasError('email')"
+      <mat-error *ngIf="signUpForm?.get('userAccount.email')?.hasError('email')"
         >Please enter a valid email</mat-error
       >
       <mat-error
-        *ngIf="signUpForm.get('userAccount.email')?.hasError('required')"
+        *ngIf="signUpForm?.get('userAccount.email')?.hasError('required')"
         >This field is required</mat-error
       >
     </mat-form-field>
@@ -31,7 +31,7 @@
         required
       />
       <mat-error
-        *ngIf="signUpForm.get('userAccount.password')?.hasError('required')"
+        *ngIf="signUpForm?.get('userAccount.password')?.hasError('required')"
         >This field is required</mat-error
       >
     </mat-form-field>
@@ -45,7 +45,7 @@
         required
       />
       <mat-error
-        *ngIf="signUpForm.get('userAccount.name')?.hasError('required')"
+        *ngIf="signUpForm?.get('userAccount.name')?.hasError('required')"
         >This field is required</mat-error
       >
     </mat-form-field>

@@ -10,7 +10,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { PhysicalExerciseComponent } from './components/physical-exercise/physical-exercise.component';
 import { MealsComponent } from './components/meals/meals.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignupStep1Component } from './components/auth/signup/steps/signup-step1/signup-step1.component';
@@ -25,7 +24,6 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     AppComponent,
     SignupComponent,
     LoginComponent,
-    PhysicalExerciseComponent,
     MealsComponent,
     HomeComponent,
     SignupStep1Component,

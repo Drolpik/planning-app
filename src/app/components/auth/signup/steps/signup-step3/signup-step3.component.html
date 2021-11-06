@@ -4,7 +4,7 @@
       <p class="header">
         Name:
         <span class="data">{{
-          this.signUpForm.get('userAccount')?.value.name
+          this.signUpForm?.get('userAccount')?.value.name
         }}</span>
       </p>
     </mat-list-item>
@@ -13,7 +13,7 @@
       <p class="header">
         Date of birth:
         <span class="data">{{
-          this.signUpForm.get('userPersonal')?.value.dateOfBirth
+          this.signUpForm?.get('userPersonal')?.value.dateOfBirth
             | date: 'mediumDate'
         }}</span>
       </p>
@@ -23,7 +23,7 @@
       <p class="header">
         Height:
         <span class="data"
-          >{{ this.signUpForm.get('userPersonal')?.value.height }} cm</span
+          >{{ this.signUpForm?.get('userPersonal')?.value.height }} cm</span
         >
       </p>
     </mat-list-item>
@@ -32,7 +32,7 @@
       <p class="header">
         Weight:
         <span class="data"
-          >{{ this.signUpForm.get('userPersonal')?.value.weight }} kg</span
+          >{{ this.signUpForm?.get('userPersonal')?.value.weight }} kg</span
         >
       </p>
     </mat-list-item>
@@ -41,7 +41,7 @@
       <p class="header">
         Gender:
         <span class="data">{{
-          this.signUpForm.get('userPersonal')?.value.gender
+          this.signUpForm?.get('userPersonal')?.value.gender
         }}</span>
       </p>
     </mat-list-item>
