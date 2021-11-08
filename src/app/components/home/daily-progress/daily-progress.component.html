@@ -1,0 +1,49 @@
+<div class="progress-container" fxLayout="row" fxLayoutAlign="space-around">
+  <div
+    class="calories-container"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+  >
+    <mat-spinner
+      mode="determinate"
+      color="accent"
+      [value]="caloriesProgress"
+    ></mat-spinner>
+    <h2 class="header-progress">Calories</h2>
+    <p>{{ currentCalories }} of {{ caloriesLimit }} kcal</p>
+  </div>
+
+  <div
+    class="protein-container"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+  >
+    <mat-spinner
+      mode="determinate"
+      color="accent"
+      [value]="proteinProgress"
+    ></mat-spinner>
+    <h2 class="header-progress">Protein</h2>
+    <p>{{ currentProtein }} of {{ proteinLimit }}g</p>
+  </div>
+
+  <div class="fat-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-spinner
+      mode="determinate"
+      color="accent"
+      [value]="fatProgress"
+    ></mat-spinner>
+    <h2 class="header-progress">Fat</h2>
+    <p>{{ currentFat }} of {{ fatLimit }}g</p>
+  </div>
+
+  <div class="carbs-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-spinner
+      mode="determinate"
+      color="accent"
+      [value]="carbsProgress"
+    ></mat-spinner>
+    <h2 class="header-progress">Carbs</h2>
+    <p>{{ currentCarbs }} of {{ carbsLimit }}g</p>
+  </div>
+</div>

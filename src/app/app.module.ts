@@ -18,6 +18,8 @@ import { SignupStep3Component } from './components/auth/signup/steps/signup-step
 import { FormContainerComponent } from './components/commons/form-container/form-container.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
+import { DailyProgressComponent } from './components/home/daily-progress/daily-progress.component';
+import { DailyMealsComponent } from './components/home/daily-meals/daily-meals.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
     SignupStep3Component,
     FormContainerComponent,
     HeaderComponent,
-    SidenavListComponent
+    SidenavListComponent,
+    DailyProgressComponent,
+    DailyMealsComponent
   ],
   imports: [
     MaterialModule,

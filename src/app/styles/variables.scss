@@ -1,0 +1,13 @@
+@mixin underlineText($widthNum) {
+  &::after {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: -5px;
+    width: $widthNum;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #ffd740;
+    opacity: 0.8;
+  }
+}

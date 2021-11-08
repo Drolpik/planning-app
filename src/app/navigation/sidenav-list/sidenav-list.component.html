@@ -1,7 +1,11 @@
 <mat-nav-list>
-  <mat-list-item (click)="onClose()">
+  <mat-list-item routerLink="" (click)="onClose()">
     <h2>Planning app</h2>
   </mat-list-item>
+  <a mat-list-item routerLink="" (click)="onClose()">
+    <mat-icon color="primary">home</mat-icon>
+    <span class="nav-item-label">Home</span>
+  </a>
   <a mat-list-item routerLink="/meals" (click)="onClose()">
     <mat-icon color="primary">menu_book</mat-icon>
     <span class="nav-item-label">Meals</span>
