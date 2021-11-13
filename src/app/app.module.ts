@@ -21,6 +21,7 @@ import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.com
 import { DailyProgressComponent } from './components/home/daily-progress/daily-progress.component';
 import { DailyMealsComponent } from './components/home/daily-meals/daily-meals.component';
 import { FullMealDialogComponent } from './components/commons/full-meal-dialog/full-meal-dialog.component';
+import { MealExpandListComponent } from './components/commons/meal-expand-list/meal-expand-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FullMealDialogComponent } from './components/commons/full-meal-dialog/f
     SidenavListComponent,
     DailyProgressComponent,
     DailyMealsComponent,
-    FullMealDialogComponent
+    FullMealDialogComponent,
+    MealExpandListComponent
   ],
   imports: [
     MaterialModule,
