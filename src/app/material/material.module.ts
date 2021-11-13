@@ -18,6 +18,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTabsModule } from '@angular/material/tabs';
 
 const materials = [
   MatFormFieldModule,
@@ -36,7 +37,8 @@ const materials = [
   MatExpansionModule,
   MatDialogModule,
   MatChipsModule,
-  MatMenuModule
+  MatMenuModule,
+  MatTabsModule
 ];
 
 @NgModule({

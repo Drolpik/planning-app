@@ -1,0 +1,35 @@
+@import '../../../../styles/variables';
+
+.search-meals-container {
+  .header {
+    position: relative;
+    font-weight: 500;
+
+    @include underlineText(105px);
+  }
+
+  .search-meals-form {
+    .calories-amount-input {
+      width: 60%;
+    }
+
+    .ingredients-list {
+      width: 60%;
+    }
+  }
+
+  .search-result {
+    .no-results-container {
+      .no-data-img {
+        width: 200px;
+        margin-bottom: 10px;
+      }
+
+      .no-results-header {
+        text-align: center;
+        font-weight: 500;
+        margin: 0;
+      }
+    }
+  }
+}

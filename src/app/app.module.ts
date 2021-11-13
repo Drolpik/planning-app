@@ -10,7 +10,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoginComponent } from './components/auth/login/login.component';
-import { MealsComponent } from './components/meals/meals.component';
+import { SearchMealsComponent } from './components/search-meals/search-meals.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignupStep1Component } from './components/auth/signup/steps/signup-step1/signup-step1.component';
 import { SignupStep2Component } from './components/auth/signup/steps/signup-step2/signup-step2.component';
@@ -22,13 +22,16 @@ import { DailyProgressComponent } from './components/home/daily-progress/daily-p
 import { DailyMealsComponent } from './components/home/daily-meals/daily-meals.component';
 import { FullMealDialogComponent } from './components/commons/full-meal-dialog/full-meal-dialog.component';
 import { MealExpandListComponent } from './components/commons/meal-expand-list/meal-expand-list.component';
+import { BasicSearchComponent } from './components/search-meals/search-options/basic-search/basic-search.component';
+import { AdvancedSearchComponent } from './components/search-meals/search-options/advanced-search/advanced-search.component';
+import { SearchMealsFormComponent } from './components/search-meals/search-options/search-meals-form/search-meals-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     LoginComponent,
-    MealsComponent,
+    SearchMealsComponent,
     HomeComponent,
     SignupStep1Component,
     SignupStep2Component,
@@ -39,7 +42,10 @@ import { MealExpandListComponent } from './components/commons/meal-expand-list/m
     DailyProgressComponent,
     DailyMealsComponent,
     FullMealDialogComponent,
-    MealExpandListComponent
+    MealExpandListComponent,
+    BasicSearchComponent,
+    AdvancedSearchComponent,
+    SearchMealsFormComponent
   ],
   imports: [
     MaterialModule,
