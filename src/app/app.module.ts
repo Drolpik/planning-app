@@ -20,6 +20,7 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
 import { DailyProgressComponent } from './components/home/daily-progress/daily-progress.component';
 import { DailyMealsComponent } from './components/home/daily-meals/daily-meals.component';
+import { FullMealDialogComponent } from './components/commons/full-meal-dialog/full-meal-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DailyMealsComponent } from './components/home/daily-meals/daily-meals.c
     HeaderComponent,
     SidenavListComponent,
     DailyProgressComponent,
-    DailyMealsComponent
+    DailyMealsComponent,
+    FullMealDialogComponent
   ],
   imports: [
     MaterialModule,

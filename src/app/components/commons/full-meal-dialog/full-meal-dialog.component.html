@@ -1,0 +1,88 @@
+<h1 mat-dialog-title fxLayoutAlign="center">{{ data.name }}</h1>
+<mat-dialog-content
+  class="content-container"
+  fxLayout="column"
+  fxLayoutGap="20px"
+>
+  <div
+    class="first-row"
+    fxLayout
+    fxLayoutAlign="center center"
+    fxLayoutGap="20px"
+  >
+    <div class="image-container">
+      <img src="{{ data.image }}" />
+    </div>
+    <div
+      class="meal-basic-info-container"
+      fxLayout="column"
+      fxLayoutAlign="center"
+      fxFlex="20"
+    >
+      <div class="cook-time-container">
+        <mat-icon>schedule</mat-icon>
+        <span>Ready in {{ data.readyInMinutes }} min</span>
+      </div>
+      <div class="calories-container">
+        <mat-icon>local_fire_department</mat-icon>
+        <span>{{ data.calories }} kcal</span>
+      </div>
+      <div class="meal-type" *ngIf="data.vegan">
+        <mat-icon>local_dining</mat-icon>
+        <span>Vegan</span>
+      </div>
+    </div>
+    <div class="description-container" fxFlex="60">
+      <h3 class="description-header">Description</h3>
+      <p>{{ data.fullDescription }}</p>
+    </div>
+  </div>
+
+  <div class="second-row" fxLayoutGap="50px">
+    <div class="ingredients-container" fxFlex="50">
+      <h3 class="ingredients-header">Ingredients</h3>
+      <mat-list>
+        <ng-container *ngFor="let item of ingredients; let last = last">
+          <mat-list-item>
+            <span class="ingredient-name" fxFlex="70">{{ item.name }}</span>
+            <span class="ingredient-amount" fxFlex="30">
+              {{ item.amount }} g
+            </span>
+            <mat-divider *ngIf="!last"></mat-divider>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </div>
+    <div class="macros-container" fxFlex="50">
+      <h3 class="macros-header">Macronutrients</h3>
+      <mat-list>
+        <ng-container *ngFor="let item of macroList; let last = last">
+          <mat-list-item>
+            <span class="macro-name" fxFlex="50">{{ item.name }}</span>
+            <span class="macro-amount" fxFlex="50">{{ item.amount }} g</span>
+          </mat-list-item>
+          <mat-divider *ngIf="!last"></mat-divider>
+        </ng-container>
+      </mat-list>
+    </div>
+  </div>
+
+  <div class="steps-container" fxFlex="50">
+    <h3 class="steps-header">Steps</h3>
+    <mat-list>
+      <ng-container
+        *ngFor="let step of steps; let index = index; let last = last"
+      >
+        <mat-list-item>
+          <span class="step-number" fxFlex="10">Step {{ index + 1 }}</span>
+          <span class="step-info" fxFlex="90">{{ step }}</span>
+        </mat-list-item>
+        <mat-divider *ngIf="!last"></mat-divider>
+      </ng-container>
+    </mat-list>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="center">
+  <button mat-button mat-dialog-close color="primary">Cancel</button>
+  <button mat-raised-button color="primary">Add</button>
+</mat-dialog-actions>

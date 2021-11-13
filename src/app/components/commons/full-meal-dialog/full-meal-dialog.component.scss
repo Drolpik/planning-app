@@ -1,0 +1,88 @@
+@import '../../../styles/variables.scss';
+
+.content-container {
+  width: 900px;
+
+  .first-row {
+    margin-bottom: 20px;
+
+    .image-container {
+      img {
+        width: 175px;
+        height: 175px;
+        border-radius: 50%;
+      }
+    }
+
+    .meal-basic-info-container {
+      .cook-time-container,
+      .calories-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        span {
+          margin-left: 10px;
+        }
+      }
+
+      .meal-type {
+        display: flex;
+        align-items: center;
+
+        span {
+          margin-left: 10px;
+        }
+      }
+    }
+
+    .description-container {
+      .description-header {
+        position: relative;
+        font-weight: 500;
+
+        @include underlineText(55px);
+      }
+    }
+  }
+
+  .second-row {
+    .ingredients-container {
+      .ingredients-header {
+        position: relative;
+        font-weight: 500;
+        margin-bottom: 0;
+
+        @include underlineText(60px);
+      }
+
+      .ingredient-amount {
+        text-align: center;
+      }
+    }
+
+    .macros-container {
+      .macros-header {
+        position: relative;
+        font-weight: 500;
+        margin-bottom: 0;
+
+        @include underlineText(90px);
+      }
+
+      .macro-amount {
+        text-align: center;
+      }
+    }
+  }
+
+  .steps-container {
+    .steps-header {
+      position: relative;
+      font-weight: 500;
+      margin-bottom: 0;
+
+      @include underlineText(30px);
+    }
+  }
+}
