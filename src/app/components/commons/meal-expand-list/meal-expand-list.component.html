@@ -20,20 +20,26 @@
           <img src="{{ meal.image }}" />
         </div>
         <div class="macros-container" fxFlex="60" fxLayoutAlign="end center">
-          <mat-list fxFlex="250px">
+          <mat-list fxFlex="60">
             <mat-list-item>
               <span fxFlex="50">Protein</span>
-              <span fxFlex="50">{{ meal.macrosInGram.protein }} g</span>
+              <span class="macro-amount" fxFlex="50"
+                >{{ meal.macrosInGram.protein }} g</span
+              >
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
               <span fxFlex="50">Fat</span>
-              <span fxFlex="50">{{ meal.macrosInGram.fat }} g</span>
+              <span class="macro-amount" fxFlex="50"
+                >{{ meal.macrosInGram.fat }} g</span
+              >
             </mat-list-item>
             <mat-divider></mat-divider>
             <mat-list-item>
               <span fxFlex="50">Carbs</span>
-              <span fxFlex="50">{{ meal.macrosInGram.carbs }} g</span>
+              <span class="macro-amount" fxFlex="50"
+                >{{ meal.macrosInGram.carbs }} g</span
+              >
             </mat-list-item>
           </mat-list>
         </div>

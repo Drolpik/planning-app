@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'planning-app';
+
+  sideBarOpen = true;
+
+  sideBarToggle() {
+    this.sideBarOpen = !this.sideBarOpen;
+  }
 }

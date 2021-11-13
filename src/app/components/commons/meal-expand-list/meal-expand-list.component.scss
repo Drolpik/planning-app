@@ -27,7 +27,8 @@
       }
 
       .macros-container {
-        .macro-name,
+        min-width: 250px;
+
         .macro-amount {
           text-align: center;
         }

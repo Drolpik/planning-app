@@ -8,6 +8,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./full-meal-dialog.component.scss']
 })
 export class FullMealDialogComponent implements OnInit {
+  mealData: any;
+
   macroList: any[];
 
   ingredients: any[];
@@ -20,22 +22,24 @@ export class FullMealDialogComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.ingredients = this.data.ingredients;
+    this.mealData = this.data.mealData;
 
-    this.steps = this.data.steps;
+    this.ingredients = this.mealData.ingredients;
+
+    this.steps = this.mealData.steps;
 
     this.macroList = [
       {
         name: 'Protein',
-        amount: this.data.macrosInGram.protein
+        amount: this.mealData.macrosInGram.protein
       },
       {
         name: 'Fat',
-        amount: this.data.macrosInGram.fat
+        amount: this.mealData.macrosInGram.fat
       },
       {
         name: 'Carbs',
-        amount: this.data.macrosInGram.carbs
+        amount: this.mealData.macrosInGram.carbs
       }
     ];
   }

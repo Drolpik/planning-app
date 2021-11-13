@@ -21,7 +21,7 @@ export class MealExpandListComponent {
 
   openDialog(mealData: any): void {
     const dialogRef = this.dialog.open(FullMealDialogComponent, {
-      data: mealData
+      data: { mealData: mealData, mode: this.mode }
     });
 
     dialogRef.afterClosed().subscribe((result) => {

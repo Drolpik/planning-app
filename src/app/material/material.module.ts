@@ -17,6 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatMenuModule } from '@angular/material/menu';
 
 const materials = [
   MatFormFieldModule,
@@ -34,7 +35,8 @@ const materials = [
   MatProgressSpinnerModule,
   MatExpansionModule,
   MatDialogModule,
-  MatChipsModule
+  MatChipsModule,
+  MatMenuModule
 ];
 
 @NgModule({

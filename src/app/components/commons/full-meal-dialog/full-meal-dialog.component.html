@@ -1,4 +1,4 @@
-<h1 mat-dialog-title fxLayoutAlign="center">{{ data.name }}</h1>
+<h1 mat-dialog-title fxLayoutAlign="center">{{ mealData.name }}</h1>
 <mat-dialog-content
   class="content-container"
   fxLayout="column"
@@ -11,7 +11,7 @@
     fxLayoutGap="20px"
   >
     <div class="image-container">
-      <img src="{{ data.image }}" />
+      <img src="{{ mealData.image }}" />
     </div>
     <div
       class="meal-basic-info-container"
@@ -21,20 +21,20 @@
     >
       <div class="cook-time-container">
         <mat-icon>schedule</mat-icon>
-        <span>Ready in {{ data.readyInMinutes }} min</span>
+        <span>Ready in {{ mealData.readyInMinutes }} min</span>
       </div>
       <div class="calories-container">
         <mat-icon>local_fire_department</mat-icon>
-        <span>{{ data.calories }} kcal</span>
+        <span>{{ mealData.calories }} kcal</span>
       </div>
-      <div class="meal-type" *ngIf="data.vegan">
+      <div class="meal-type" *ngIf="mealData.vegan">
         <mat-icon>local_dining</mat-icon>
         <span>Vegan</span>
       </div>
     </div>
     <div class="description-container" fxFlex="60">
       <h3 class="description-header">Description</h3>
-      <p>{{ data.fullDescription }}</p>
+      <p>{{ mealData.fullDescription }}</p>
     </div>
   </div>
 

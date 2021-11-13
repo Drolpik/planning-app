@@ -1,9 +1,9 @@
-<mat-sidenav-container>
-  <mat-sidenav role="navigation" #sidenav>
-    <app-sidenav-list (closeSidenav)="sidenav.close()"></app-sidenav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <app-header (sidenavToggle)="sidenav.toggle()"></app-header>
+<app-header (sidebarToggle)="sideBarToggle()"></app-header>
+<mat-drawer-container>
+  <mat-drawer mode="side" [opened]="sideBarOpen">
+    <app-sidenav-list></app-sidenav-list>
+  </mat-drawer>
+  <mat-drawer-content>
     <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </mat-drawer-content>
+</mat-drawer-container>
