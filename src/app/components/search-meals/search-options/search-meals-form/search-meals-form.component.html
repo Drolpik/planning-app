@@ -1,27 +1,70 @@
 <div class="search-meals-container">
   <h2 class="header">Search meals</h2>
   <mat-card fxLayout fxLayoutGap="20px">
-    <div
+    <form
+      [formGroup]="searchForm"
       class="search-meals-form"
-      fxLayout="column"
       fxFlex="50"
       fxLayoutAlign="center center"
     >
-      <mat-form-field class="calories-amount-input">
-        <input
-          type="number"
-          matInput
-          placeholder="Amount of calories"
-          required
-        />
-      </mat-form-field>
+      <div fxLayout="column" fxFlex="50">
+        <mat-form-field class="calories-amount-container">
+          <input
+            type="number"
+            matInput
+            placeholder="Amount of calories"
+            formControlName="caloriesAmount"
+            required
+          />
+        </mat-form-field>
 
-      <mat-form-field class="ingredients-list">
-        <mat-label>Ingredients</mat-label>
-        <mat-chip-list #chipList aria-label="Ingredients selection">
-          <ng-container *ngIf="ingredients.length > 0">
+        <ng-container *ngIf="mode === 'advanced'">
+          <mat-form-field class="meal-type-container">
+            <mat-label>Meal type</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let type of mealType" [value]="type.value">
+                {{ type.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="protein-amount-container">
+            <input
+              type="number"
+              matInput
+              placeholder="Amount of protein"
+              formControlName="proteinAmount"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="fat-amount-container">
+            <input
+              type="number"
+              matInput
+              placeholder="Amount of fat"
+              formControlName="fatAmount"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="carbs-amount-container">
+            <input
+              type="number"
+              matInput
+              placeholder="Amount of carbs"
+              formControlName="carbsAmount"
+            />
+          </mat-form-field>
+        </ng-container>
+
+        <mat-form-field class="ingredients-list">
+          <mat-label>Ingredients</mat-label>
+          <mat-chip-list
+            #chipList
+            aria-label="Ingredients selection"
+            formControlName="ingredients"
+          >
             <mat-chip
-              *ngFor="let ingredient of ingredients"
+              *ngFor="let ingredient of searchForm.get('ingredients')?.value"
               [selectable]="selectable"
               [removable]="removable"
               (removed)="removIngredient(ingredient)"
@@ -31,31 +74,30 @@
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip>
-          </ng-container>
-          <input
-            placeholder="Type a new ingredient and press Enter"
-            [matChipInputFor]="chipList"
-            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            [matChipInputAddOnBlur]="addOnBlur"
-            (matChipInputTokenEnd)="addIngredient($event)"
-          />
-        </mat-chip-list>
-      </mat-form-field>
 
-      <ng-container *ngIf="mode === 'advanced'"></ng-container>
+            <input
+              placeholder="Add a new ingredient"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="addIngredient($event)"
+            />
+          </mat-chip-list>
+        </mat-form-field>
 
-      <div class="button-container" fxLayoutAlign="center center">
-        <button
-          type="submit"
-          class="search-button"
-          mat-raised-button
-          color="primary"
-          (click)="search()"
-        >
-          Search
-        </button>
+        <div class="button-container" fxLayoutAlign="center center">
+          <button
+            type="submit"
+            class="search-button"
+            mat-raised-button
+            color="primary"
+            (click)="search()"
+          >
+            Search
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
     <mat-divider [vertical]="true"></mat-divider>
     <div class="search-result" fxFlex="50" fxLayoutAlign="center center">
       <div class="no-results-container" fxLayout="column">

@@ -9,12 +9,20 @@
   }
 
   .search-meals-form {
-    .calories-amount-input {
-      width: 60%;
+    .calories-amount-container,
+    .meal-type-container,
+    .protein-amount-container,
+    .fat-amount-container,
+    .carbs-amount-container {
+      width: 50%;
     }
 
     .ingredients-list {
-      width: 60%;
+      width: 100%;
+    }
+
+    .button-container {
+      margin-top: 10px;
     }
   }
 
