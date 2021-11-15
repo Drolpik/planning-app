@@ -1,113 +1,131 @@
-<div class="search-meals-container">
-  <h2 class="header">Search meals</h2>
-  <mat-card fxLayout fxLayoutGap="20px">
-    <form
-      [formGroup]="searchForm"
-      class="search-meals-form"
-      fxFlex="50"
+<div class="container" fxLayout="row" fxLayoutGap="20px">
+  <div class="form-container" fxFlex="50">
+    <h2 class="header">Search meals</h2>
+    <mat-card
+      fxLayout="column"
       fxLayoutAlign="center center"
+      fxLayoutGap="20px"
     >
-      <div fxLayout="column" fxFlex="50" fxLayoutGap="5px">
-        <mat-form-field class="calories-amount-container">
-          <input
-            type="number"
-            matInput
-            placeholder="Amount of calories"
-            formControlName="caloriesAmount"
-            required
-          />
-          <mat-error
-            *ngIf="searchForm.get('caloriesAmount')?.hasError('required')"
-            >This field is required</mat-error
-          >
-        </mat-form-field>
-
-        <ng-container *ngIf="mode === 'advanced'">
-          <mat-form-field class="meal-type-container">
-            <mat-label>Meal type</mat-label>
-            <mat-select formControlName="mealType">
-              <mat-option *ngFor="let type of mealType" [value]="type.value">
-                {{ type.value }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-
-          <mat-form-field class="protein-amount-container">
+      <form [formGroup]="searchForm" class="search-meals-form">
+        <div fxLayout="column" fxLayoutGap="5px">
+          <mat-form-field class="calories-amount-container">
             <input
               type="number"
               matInput
-              placeholder="Amount of protein"
-              formControlName="proteinAmount"
+              placeholder="Amount of calories"
+              formControlName="caloriesAmount"
+              required
             />
-          </mat-form-field>
-
-          <mat-form-field class="fat-amount-container">
-            <input
-              type="number"
-              matInput
-              placeholder="Amount of fat"
-              formControlName="fatAmount"
-            />
-          </mat-form-field>
-
-          <mat-form-field class="carbs-amount-container">
-            <input
-              type="number"
-              matInput
-              placeholder="Amount of carbs"
-              formControlName="carbsAmount"
-            />
-          </mat-form-field>
-        </ng-container>
-
-        <mat-form-field class="ingredients-list">
-          <mat-label>Ingredients</mat-label>
-          <mat-chip-list
-            #chipList
-            aria-label="Ingredients selection"
-            formControlName="ingredients"
-          >
-            <mat-chip
-              *ngFor="let ingredient of searchForm.get('ingredients')?.value"
-              [selectable]="selectable"
-              [removable]="removable"
-              (removed)="removIngredient(ingredient)"
+            <mat-error
+              *ngIf="searchForm.get('caloriesAmount')?.hasError('required')"
+              >This field is required</mat-error
             >
-              {{ ingredient.name }}
-              <button matChipRemove *ngIf="removable">
-                <mat-icon>cancel</mat-icon>
-              </button>
-            </mat-chip>
+          </mat-form-field>
 
-            <input
-              placeholder="Add a new ingredient"
-              [matChipInputFor]="chipList"
-              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-              [matChipInputAddOnBlur]="addOnBlur"
-              (matChipInputTokenEnd)="addIngredient($event)"
-            />
-          </mat-chip-list>
-        </mat-form-field>
+          <ng-container *ngIf="mode === 'advanced'">
+            <mat-form-field class="meal-type-container">
+              <mat-label>Meal type</mat-label>
+              <mat-select formControlName="mealType">
+                <mat-option *ngFor="let type of mealType" [value]="type.value">
+                  {{ type.value }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
-        <div class="button-container" fxLayoutAlign="center center">
-          <button
-            type="submit"
-            class="search-button"
-            mat-raised-button
-            color="primary"
-            (click)="search()"
-          >
-            Search
-          </button>
+            <mat-form-field class="protein-amount-container">
+              <input
+                type="number"
+                matInput
+                placeholder="Amount of protein"
+                formControlName="proteinAmount"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="fat-amount-container">
+              <input
+                type="number"
+                matInput
+                placeholder="Amount of fat"
+                formControlName="fatAmount"
+              />
+            </mat-form-field>
+
+            <mat-form-field class="carbs-amount-container">
+              <input
+                type="number"
+                matInput
+                placeholder="Amount of carbs"
+                formControlName="carbsAmount"
+              />
+            </mat-form-field>
+          </ng-container>
+
+          <mat-form-field class="ingredients-list">
+            <mat-label>Ingredients</mat-label>
+            <mat-chip-list
+              #chipList
+              aria-label="Ingredients selection"
+              formControlName="ingredients"
+            >
+              <mat-chip
+                *ngFor="let ingredient of searchForm.get('ingredients')?.value"
+                [selectable]="selectable"
+                [removable]="removable"
+                (removed)="removIngredient(ingredient)"
+              >
+                {{ ingredient.name }}
+                <button matChipRemove *ngIf="removable">
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+
+              <input
+                placeholder="Add a new ingredient"
+                [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="addIngredient($event)"
+              />
+            </mat-chip-list>
+          </mat-form-field>
+
+          <div class="button-container" fxLayoutAlign="center center">
+            <button
+              type="submit"
+              class="search-button"
+              mat-raised-button
+              color="primary"
+              (click)="search()"
+            >
+              Search
+            </button>
+          </div>
         </div>
-      </div>
-    </form>
-    <mat-divider [vertical]="true"></mat-divider>
-    <div class="search-result" fxFlex="50" fxLayoutAlign="center center">
-      <div class="no-results-container" fxLayout="column">
-        <img class="no-data-img" src="../../../../assets/empty.svg" />
-        <h3 class="no-results-header">No results</h3>
-      </div>
+      </form>
+    </mat-card>
+  </div>
+
+  <div class="search-results" fxFlex="50">
+    <div fxLayout="column">
+      <h2 class="header">Results</h2>
+      <mat-card>
+        <div
+          class="results-container"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+        >
+          <ng-container *ngIf="!formSubmitted; else mealsList">
+            <img class="no-data-img" src="../../../../assets/empty.svg" />
+            <h3 class="no-results-header">No results</h3>
+          </ng-container>
+          <ng-template #mealsList>
+            <app-meal-expand-list
+              [data]="data"
+              mode="searchList"
+            ></app-meal-expand-list>
+          </ng-template>
+        </div>
+      </mat-card>
     </div>
-  </mat-card>
+  </div>
 </div>

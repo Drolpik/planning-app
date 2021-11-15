@@ -1,5 +1,5 @@
 <div class="meals-container" fxLayout="column" fxLayoutAlign="center center">
-  <h1 class="section-header">{{ sectionName }}</h1>
+  <h1 *ngIf="sectionNameStatus" class="section-header">{{ sectionName }}</h1>
   <mat-accordion class="panel-container">
     <mat-expansion-panel
       *ngFor="let meal of data"
@@ -24,17 +24,17 @@
             <mat-list-item>
               <span fxFlex="50">Protein</span>
               <span class="macro-amount" fxFlex="50"
-                >{{ meal.macrosInGram.protein }} g</span
-              >
+                >{{ meal.macrosInGram.protein }} g
+              </span>
+              <mat-divider></mat-divider>
             </mat-list-item>
-            <mat-divider></mat-divider>
             <mat-list-item>
               <span fxFlex="50">Fat</span>
               <span class="macro-amount" fxFlex="50"
-                >{{ meal.macrosInGram.fat }} g</span
-              >
+                >{{ meal.macrosInGram.fat }} g
+              </span>
+              <mat-divider></mat-divider>
             </mat-list-item>
-            <mat-divider></mat-divider>
             <mat-list-item>
               <span fxFlex="50">Carbs</span>
               <span class="macro-amount" fxFlex="50"
@@ -49,12 +49,25 @@
         <p>{{ meal.fullDescription }}</p>
       </div>
 
-      <mat-action-row>
+      <mat-action-row class="buttons-container">
         <button *ngIf="mode === 'mealList'" mat-button color="warn">
           Delete
         </button>
-        <button mat-button color="primary" (click)="openDialog(meal)">
+        <button
+          class="more-information-button"
+          mat-button
+          color="primary"
+          (click)="openDialog(meal)"
+        >
           More information
+        </button>
+        <button
+          *ngIf="mode === 'searchList'"
+          mat-raised-button
+          color="primary"
+          (click)="addMeal(meal)"
+        >
+          Add
         </button>
       </mat-action-row>
     </mat-expansion-panel>

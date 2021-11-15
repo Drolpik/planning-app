@@ -3,6 +3,7 @@ import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 import { MatChipInputEvent } from '@angular/material/chips';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { mealsData } from 'src/app/components/home/daily-meals/temp.data';
 
 interface Ingredient {
   name: string;
@@ -31,6 +32,8 @@ export class SearchMealsFormComponent implements OnInit {
   searchForm: FormGroup;
 
   formSubmitted = false;
+
+  data = mealsData;
 
   mealType: MealType[] = [
     { value: 'Vegan' },

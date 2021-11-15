@@ -1,40 +1,52 @@
 @import '../../../../styles/variables';
 
-.search-meals-container {
-  .header {
-    position: relative;
-    font-weight: 500;
+.container {
+  padding-bottom: 50px;
 
-    @include underlineText(105px);
+  .form-container {
+    .header {
+      position: relative;
+      font-weight: 500;
+
+      @include underlineText(105px);
+    }
+
+    .search-meals-form {
+      width: 60%;
+
+      .calories-amount-container,
+      .meal-type-container,
+      .protein-amount-container,
+      .fat-amount-container,
+      .carbs-amount-container {
+        width: 50%;
+      }
+
+      .ingredients-list {
+        width: 100%;
+      }
+
+      .button-container {
+        margin-top: 5px;
+      }
+    }
   }
 
-  .search-meals-form {
-    .calories-amount-container,
-    .meal-type-container,
-    .protein-amount-container,
-    .fat-amount-container,
-    .carbs-amount-container {
-      width: 50%;
+  .search-results {
+    .header {
+      position: relative;
+      font-weight: 500;
+
+      @include underlineText(60px);
     }
 
-    .ingredients-list {
-      width: 100%;
-    }
-
-    .button-container {
-      margin-top: 5px;
-    }
-  }
-
-  .search-result {
-    .no-results-container {
+    .results-container {
       .no-data-img {
         width: 200px;
         margin-bottom: 10px;
       }
 
       .no-results-header {
-        text-align: center;
         font-weight: 500;
         margin: 0;
       }

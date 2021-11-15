@@ -13,6 +13,8 @@ export class MealExpandListComponent {
 
   @Input() sectionName: string;
 
+  @Input() sectionNameStatus = false;
+
   @Input() mode: string;
 
   panelOpenState = false;
@@ -28,5 +30,10 @@ export class MealExpandListComponent {
       console.log('The dialog was closed');
       console.log(result);
     });
+  }
+
+  addMeal(meal: any): void {
+    console.log('Meal added');
+    console.log(meal);
   }
 }
