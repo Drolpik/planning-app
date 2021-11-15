@@ -1,4 +1,11 @@
 <div class="home-container" fxFlex="cloumn">
   <app-daily-progress></app-daily-progress>
-  <app-daily-meals></app-daily-meals>
+  <div class="your-container" fxLayout fxLayoutGap="20px">
+    <div fxFlex="50">
+      <app-daily-meals></app-daily-meals>
+    </div>
+    <div fxFlex="50">
+      <app-daily-trainings></app-daily-trainings>
+    </div>
+  </div>
 </div>

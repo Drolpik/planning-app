@@ -1,0 +1,18 @@
+<div>
+  <h1 class="section-header">Your trainings</h1>
+  <mat-card>
+    <div
+      class="content-container"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <ng-container *ngIf="!trainingsStatus">
+        <img
+          class="no-training-needed-img"
+          src="../../../../assets/finish.svg"
+        />
+        <h3 class="no-training-needed-header">No training needed</h3>
+      </ng-container>
+    </div>
+  </mat-card>
+</div>

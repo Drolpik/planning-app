@@ -1,6 +1,10 @@
-<app-meal-expand-list
-  [data]="data"
-  sectionName="Your meals"
-  [sectionNameStatus]="true"
-  mode="mealList"
-></app-meal-expand-list>
+<div>
+  <h1 class="section-header">Your meals</h1>
+  <mat-card>
+    <app-meal-expand-list
+      [data]="data"
+      sectionName="Your meals"
+      mode="mealList"
+    ></app-meal-expand-list>
+  </mat-card>
+</div>

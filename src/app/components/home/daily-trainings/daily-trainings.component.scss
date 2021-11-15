@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.section-header {
+  position: relative;
+
+  @include underlineText(150px);
+}
+
+.content-container {
+  .no-training-needed-img {
+    width: 200px;
+    margin-bottom: 10px;
+  }
+
+  .no-training-needed-header {
+    font-weight: 500;
+    margin: 0;
+  }
+}

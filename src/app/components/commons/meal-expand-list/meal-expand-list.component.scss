@@ -2,13 +2,7 @@
 
 .meals-container {
   padding-top: 20px;
-  max-width: 700px;
-
-  .section-header {
-    position: relative;
-
-    @include underlineText(123px);
-  }
+  // max-width: 700px;
 
   .panel-container {
     width: 85%;

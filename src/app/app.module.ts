@@ -25,6 +25,7 @@ import { MealExpandListComponent } from './components/commons/meal-expand-list/m
 import { BasicSearchComponent } from './components/search-meals/search-options/basic-search/basic-search.component';
 import { AdvancedSearchComponent } from './components/search-meals/search-options/advanced-search/advanced-search.component';
 import { SearchMealsFormComponent } from './components/search-meals/search-options/search-meals-form/search-meals-form.component';
+import { DailyTrainingsComponent } from './components/home/daily-trainings/daily-trainings.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { SearchMealsFormComponent } from './components/search-meals/search-optio
     MealExpandListComponent,
     BasicSearchComponent,
     AdvancedSearchComponent,
-    SearchMealsFormComponent
+    SearchMealsFormComponent,
+    DailyTrainingsComponent
   ],
   imports: [
     MaterialModule,

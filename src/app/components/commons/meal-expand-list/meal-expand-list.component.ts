@@ -13,8 +13,6 @@ export class MealExpandListComponent {
 
   @Input() sectionName: string;
 
-  @Input() sectionNameStatus = false;
-
   @Input() mode: string;
 
   panelOpenState = false;

@@ -1,0 +1,7 @@
+@import '../../../styles/variables.scss';
+
+.section-header {
+  position: relative;
+
+  @include underlineText(123px);
+}
