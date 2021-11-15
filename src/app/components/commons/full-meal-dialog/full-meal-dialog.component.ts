@@ -16,12 +16,16 @@ export class FullMealDialogComponent implements OnInit {
 
   steps: any[];
 
+  mode: string;
+
   constructor(
     public dialogRef: MatDialogRef<FullMealDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit() {
+    this.mode = this.data.mode;
+
     this.mealData = this.data.mealData;
 
     this.ingredients = this.mealData.ingredients;
@@ -42,5 +46,10 @@ export class FullMealDialogComponent implements OnInit {
         amount: this.mealData.macrosInGram.carbs
       }
     ];
+  }
+
+  addMeal(): void {
+    console.log('Meal added');
+    console.log(this.mealData);
   }
 }
