@@ -1,49 +1,45 @@
 <app-form-container [formSectionName]="'Summary'">
   <mat-list>
     <mat-list-item>
-      <p class="header">
-        Name:
-        <span class="data">{{
-          this.signUpForm?.get('userAccount')?.value.name
-        }}</span>
-      </p>
+      <span fxFlex="50" class="header">Name</span>
+      <span fxFlex="50" class="data">
+        {{ this.signUpForm?.get('userAccount')?.value.name }}
+      </span>
+      <mat-divider></mat-divider>
     </mat-list-item>
 
     <mat-list-item>
-      <p class="header">
-        Date of birth:
-        <span class="data">{{
+      <span fxFlex="50" class="header">Date of birth</span>
+      <span fxFlex="50" class="data">
+        {{
           this.signUpForm?.get('userPersonal')?.value.dateOfBirth
             | date: 'mediumDate'
-        }}</span>
-      </p>
+        }}
+      </span>
+      <mat-divider></mat-divider>
     </mat-list-item>
 
     <mat-list-item>
-      <p class="header">
-        Height:
-        <span class="data"
-          >{{ this.signUpForm?.get('userPersonal')?.value.height }} cm</span
-        >
-      </p>
+      <span fxFlex="50" class="header">Height</span>
+      <span fxFlex="50" class="data">
+        {{ this.signUpForm?.get('userPersonal')?.value.height }} cm
+      </span>
+      <mat-divider></mat-divider>
     </mat-list-item>
 
     <mat-list-item>
-      <p class="header">
-        Weight:
-        <span class="data"
-          >{{ this.signUpForm?.get('userPersonal')?.value.weight }} kg</span
-        >
-      </p>
+      <span fxFlex="50" class="header">Weight</span>
+      <span fxFlex="50" class="data">
+        {{ this.signUpForm?.get('userPersonal')?.value.weight }} kg
+      </span>
+      <mat-divider></mat-divider>
     </mat-list-item>
 
     <mat-list-item>
-      <p class="header">
-        Gender:
-        <span class="data">{{
-          this.signUpForm?.get('userPersonal')?.value.gender
-        }}</span>
-      </p>
+      <span fxFlex="50" class="header">Gender</span>
+      <span fxFlex="50" class="data">
+        {{ this.signUpForm?.get('userPersonal')?.value.gender }}
+      </span>
     </mat-list-item>
   </mat-list>
 
