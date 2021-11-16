@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SignupStep3Component } from './signup-step3.component';
+import { SignupSummaryStepComponent } from './signup-summary-step.component';
 
 describe('SignupStep3Component', () => {
-  let component: SignupStep3Component;
-  let fixture: ComponentFixture<SignupStep3Component>;
+  let component: SignupSummaryStepComponent;
+  let fixture: ComponentFixture<SignupSummaryStepComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SignupStep3Component]
+      declarations: [SignupSummaryStepComponent]
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SignupStep3Component);
+    fixture = TestBed.createComponent(SignupSummaryStepComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

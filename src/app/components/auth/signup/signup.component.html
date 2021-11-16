@@ -11,7 +11,9 @@
       [stepControl]="signUpForm.get('userAccount')!"
     >
       <ng-template matStepLabel>Account</ng-template>
-      <app-signup-step1 [signUpForm]="signUpForm"></app-signup-step1>
+      <app-signup-account-step
+        [signUpForm]="signUpForm"
+      ></app-signup-account-step>
     </mat-step>
 
     <mat-step
@@ -19,12 +21,16 @@
       [stepControl]="signUpForm?.get('userPersonal')!"
     >
       <ng-template matStepLabel>Personal</ng-template>
-      <app-signup-step2 [signUpForm]="signUpForm"></app-signup-step2>
+      <app-signup-personal-step
+        [signUpForm]="signUpForm"
+      ></app-signup-personal-step>
     </mat-step>
 
     <mat-step>
       <ng-template matStepLabel>Summary</ng-template>
-      <app-signup-step3 [signUpForm]="signUpForm"></app-signup-step3>
+      <app-signup-summary-step
+        [signUpForm]="signUpForm"
+      ></app-signup-summary-step>
     </mat-step>
   </mat-horizontal-stepper>
 </form>

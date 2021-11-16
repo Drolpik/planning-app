@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-signup-step3',
-  templateUrl: './signup-step3.component.html',
-  styleUrls: ['./signup-step3.component.scss']
+  selector: 'app-signup-summary-step',
+  templateUrl: './signup-summary-step.component.html',
+  styleUrls: ['./signup-summary-step.component.scss']
 })
-export class SignupStep3Component {
+export class SignupSummaryStepComponent {
   @Input() signUpForm: FormGroup;
 
   formSubmitted = false;

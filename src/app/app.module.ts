@@ -12,9 +12,9 @@ import { SignupComponent } from './components/auth/signup/signup.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SearchMealsComponent } from './components/search-meals/search-meals.component';
 import { HomeComponent } from './components/home/home.component';
-import { SignupStep1Component } from './components/auth/signup/steps/signup-step1/signup-step1.component';
-import { SignupStep2Component } from './components/auth/signup/steps/signup-step2/signup-step2.component';
-import { SignupStep3Component } from './components/auth/signup/steps/signup-step3/signup-step3.component';
+import { SignupAccountStepComponent } from './components/auth/signup/steps/signup-account-step/signup-account-step.component';
+import { SignupPersonalStepComponent } from './components/auth/signup/steps/signup-personal-step/signup-personal-step.component';
+import { SignupSummaryStepComponent } from './components/auth/signup/steps/signup-summary-step/signup-summary-step.component';
 import { FormContainerComponent } from './components/commons/form-container/form-container.component';
 import { HeaderComponent } from './navigation/header/header.component';
 import { SidenavListComponent } from './navigation/sidenav-list/sidenav-list.component';
@@ -34,9 +34,9 @@ import { DailyTrainingsComponent } from './components/home/daily-trainings/daily
     LoginComponent,
     SearchMealsComponent,
     HomeComponent,
-    SignupStep1Component,
-    SignupStep2Component,
-    SignupStep3Component,
+    SignupAccountStepComponent,
+    SignupPersonalStepComponent,
+    SignupSummaryStepComponent,
     FormContainerComponent,
     HeaderComponent,
     SidenavListComponent,
