@@ -1,14 +1,6 @@
 <app-form-container [formSectionName]="'Summary'">
   <mat-list>
     <mat-list-item>
-      <span fxFlex="50" class="header">Name</span>
-      <span fxFlex="50" class="data">
-        {{ this.signUpForm?.get('userAccount')?.value.name }}
-      </span>
-      <mat-divider></mat-divider>
-    </mat-list-item>
-
-    <mat-list-item>
       <span fxFlex="50" class="header">Date of birth</span>
       <span fxFlex="50" class="data">
         {{
@@ -39,6 +31,24 @@
       <span fxFlex="50" class="header">Gender</span>
       <span fxFlex="50" class="data">
         {{ this.signUpForm?.get('userPersonal')?.value.gender }}
+      </span>
+    </mat-list-item>
+  </mat-list>
+
+  <br />
+
+  <mat-list>
+    <mat-list-item>
+      <span fxFlex="50" class="header">Activity level</span>
+      <span fxFlex="50" class="data">
+        {{ this.signUpForm?.get('activityAndGoal')?.value.activityLevel }}
+      </span>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    <mat-list-item>
+      <span fxFlex="50" class="header">Diet goal</span>
+      <span fxFlex="50" class="data">
+        {{ this.signUpForm?.get('activityAndGoal')?.value.dietGoal }}
       </span>
     </mat-list-item>
   </mat-list>

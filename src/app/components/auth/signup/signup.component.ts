@@ -15,8 +15,7 @@ export class SignupComponent implements OnInit {
     this.signUpForm = this.fb.group({
       userAccount: this.fb.group({
         email: [null, [Validators.required, Validators.email]],
-        password: [null, Validators.required],
-        name: [null, Validators.required]
+        password: [null, Validators.required]
       }),
       userPersonal: this.fb.group({
         dateOfBirth: [null, Validators.required],
@@ -29,6 +28,10 @@ export class SignupComponent implements OnInit {
           [Validators.required, Validators.min(20), Validators.max(300)]
         ],
         gender: [null, Validators.required]
+      }),
+      activityAndGoal: this.fb.group({
+        activityLevel: [null, Validators.required],
+        dietGoal: [null, Validators.required]
       })
     });
   }

@@ -36,20 +36,6 @@
       >
     </mat-form-field>
 
-    <mat-form-field formGroupName="userAccount">
-      <input
-        type="text"
-        matInput
-        placeholder="Your name"
-        formControlName="name"
-        required
-      />
-      <mat-error
-        *ngIf="signUpForm?.get('userAccount.name')?.hasError('required')"
-        >This field is required</mat-error
-      >
-    </mat-form-field>
-
     <button mat-button color="primary" matStepperNext>Next</button>
   </div>
 </app-form-container>

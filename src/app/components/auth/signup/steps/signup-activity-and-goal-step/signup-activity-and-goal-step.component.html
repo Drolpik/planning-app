@@ -1,0 +1,54 @@
+<app-form-container [formSectionName]="'Activity and Goal'">
+  <div
+    [formGroup]="signUpForm"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px"
+  >
+    <ng-container formGroupName="activityAndGoal">
+      <mat-form-field>
+        <mat-label>Activity level</mat-label>
+        <mat-select formControlName="activityLevel" required>
+          <mat-option
+            *ngFor="let activity of activityLevels"
+            [value]="activity.value.split(' ')[0]"
+          >
+            {{ activity.value }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="
+            signUpForm
+              ?.get('activityAndGoal.activityLevel')
+              ?.hasError('required')
+          "
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container formGroupName="activityAndGoal">
+      <mat-form-field>
+        <mat-label>Goal</mat-label>
+        <mat-select formControlName="dietGoal" required>
+          <mat-option *ngFor="let goal of dietGoals" [value]="goal.value">
+            {{ goal.value }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="
+            signUpForm?.get('activityAndGoal.dietGoal')?.hasError('required')
+          "
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <div class="button-container">
+      <button class="back-button" mat-button matStepperPrevious>Back</button>
+      <button class="next-button" mat-button color="primary" matStepperNext>
+        Next
+      </button>
+    </div>
+  </div>
+</app-form-container>

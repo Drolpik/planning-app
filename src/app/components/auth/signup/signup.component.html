@@ -26,6 +26,16 @@
       ></app-signup-personal-step>
     </mat-step>
 
+    <mat-step
+      formGroupName="activityAndGoal"
+      [stepControl]="signUpForm?.get('activityAndGoal')!"
+    >
+      <ng-template matStepLabel>Activity and Goal</ng-template>
+      <app-signup-activity-and-goal-step
+        [signUpForm]="signUpForm"
+      ></app-signup-activity-and-goal-step>
+    </mat-step>
+
     <mat-step>
       <ng-template matStepLabel>Summary</ng-template>
       <app-signup-summary-step

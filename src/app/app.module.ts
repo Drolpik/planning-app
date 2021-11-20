@@ -26,6 +26,7 @@ import { BasicSearchComponent } from './components/search-meals/search-options/b
 import { AdvancedSearchComponent } from './components/search-meals/search-options/advanced-search/advanced-search.component';
 import { SearchMealsFormComponent } from './components/search-meals/search-options/search-meals-form/search-meals-form.component';
 import { DailyTrainingsComponent } from './components/home/daily-trainings/daily-trainings.component';
+import { SignupActivityAndGoalStepComponent } from './components/auth/signup/steps/signup-activity-and-goal-step/signup-activity-and-goal-step.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { DailyTrainingsComponent } from './components/home/daily-trainings/daily
     BasicSearchComponent,
     AdvancedSearchComponent,
     SearchMealsFormComponent,
-    DailyTrainingsComponent
+    DailyTrainingsComponent,
+    SignupActivityAndGoalStepComponent
   ],
   imports: [
     MaterialModule,
