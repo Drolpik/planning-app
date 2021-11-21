@@ -1,0 +1,11 @@
+.user-data-container {
+  .height-container,
+  .weight-container {
+    width: 50%;
+
+    .height-field,
+    .weight-field {
+      width: 70%;
+    }
+  }
+}

@@ -27,6 +27,7 @@ import { AdvancedSearchComponent } from './components/search-meals/search-option
 import { SearchMealsFormComponent } from './components/search-meals/search-options/search-meals-form/search-meals-form.component';
 import { DailyTrainingsComponent } from './components/home/daily-trainings/daily-trainings.component';
 import { SignupActivityAndGoalStepComponent } from './components/auth/signup/steps/signup-activity-and-goal-step/signup-activity-and-goal-step.component';
+import { UserDataComponent } from './components/user-data/user-data.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SignupActivityAndGoalStepComponent } from './components/auth/signup/ste
     AdvancedSearchComponent,
     SearchMealsFormComponent,
     DailyTrainingsComponent,
-    SignupActivityAndGoalStepComponent
+    SignupActivityAndGoalStepComponent,
+    UserDataComponent
   ],
   imports: [
     MaterialModule,

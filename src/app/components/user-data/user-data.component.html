@@ -1,0 +1,100 @@
+<div class="user-data-container">
+  <app-form-container formSectionName="User data">
+    <div
+      [formGroup]="userDataForm"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="10px"
+    >
+      <div class="height-container">
+        <mat-form-field class="height-field">
+          <input
+            type="number"
+            matInput
+            placeholder="Your height"
+            formControlName="height"
+            min="100"
+            max="250"
+            required
+          />
+          <mat-error *ngIf="userDataForm?.get('height')?.hasError('required')"
+            >This field is required</mat-error
+          >
+          <mat-error
+            *ngIf="
+              userDataForm?.get('userPersonal.height')?.hasError('min') ||
+              userDataForm?.get('userPersonal.height')?.hasError('max')
+            "
+            >Please enter a valid height</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="weight-container">
+        <mat-form-field class="weight-field">
+          <input
+            type="number"
+            matInput
+            placeholder="Your weight"
+            formControlName="weight"
+            min="20"
+            max="300"
+            required
+          />
+          <mat-error
+            *ngIf="
+              userDataForm?.get('userPersonal.weight')?.hasError('required')
+            "
+            >This field is required</mat-error
+          >
+          <mat-error
+            *ngIf="
+              userDataForm?.get('userPersonal.weight')?.hasError('min') ||
+              userDataForm?.get('userPersonal.weight')?.hasError('max')
+            "
+            >Please enter a valid weight</mat-error
+          >
+        </mat-form-field>
+      </div>
+
+      <mat-form-field class="goal-field">
+        <mat-label>Goal</mat-label>
+        <mat-select formControlName="dietGoal" required>
+          <mat-option *ngFor="let goal of dietGoals" [value]="goal.value">
+            {{ goal.value }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="userDataForm?.get('dietGoal')?.hasError('required')"
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="activityLevel-field">
+        <mat-label>Activity level</mat-label>
+        <mat-select formControlName="activityLevel" required>
+          <mat-option
+            *ngFor="let activity of activityLevels"
+            [value]="activity.value.split(' ')[0]"
+          >
+            {{ activity.value }}
+          </mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="userDataForm?.get('activityLevel')?.hasError('required')"
+          >This field is required
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button-container">
+        <button
+          class="submit-button"
+          mat-raised-button
+          color="primary"
+          (click)="save()"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </app-form-container>
+</div>

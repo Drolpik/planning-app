@@ -3,7 +3,8 @@
 }
 
 .height-container,
-.weight-container {
+.weight-container,
+.gender-container {
   width: 50%;
 
   .height-field,
@@ -12,7 +13,7 @@
   }
 }
 
-.weight-container {
+.gender-container {
   margin-top: 10px;
 
   .mat-radio-button ~ .mat-radio-button {
