@@ -1,7 +1,14 @@
+@import '../../../styles//variables.scss';
+
 .progress-container {
   margin: 20px 0;
 
   .header-progress {
     margin: 10px 0 3px;
+  }
+
+  .progress-exceeded {
+    color: $warnColor;
+    font-weight: bold;
   }
 }

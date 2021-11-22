@@ -7,11 +7,20 @@
     <div fxLayout="column" fxLayoutAlign="center center">
       <mat-spinner
         mode="determinate"
-        color="accent"
+        color="{{ progress.currentValue > progress.limit ? 'warn' : 'accent' }}"
         [value]="progress.progress"
       ></mat-spinner>
       <h2 class="header-progress">{{ progress.name }}</h2>
-      <p>{{ progress.currentValue }} of {{ progress.limit }} kcal</p>
+      <p>
+        <span
+          [ngClass]="
+            progress.currentValue > progress.limit ? 'progress-exceeded' : ''
+          "
+          >{{ progress.currentValue }}
+        </span>
+        of {{ progress.limit }}
+        <span>{{ progress.name === 'Calories' ? 'kcal' : 'g' }}</span>
+      </p>
     </div>
     <mat-divider *ngIf="!last" [vertical]="true"></mat-divider>
   </ng-container>

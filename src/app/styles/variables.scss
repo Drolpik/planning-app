@@ -1,3 +1,7 @@
+$primaryColor: #673ab7;
+$accentColor: #ffd740;
+$warnColor: #f44336;
+
 @mixin underlineText($widthNum) {
   &::after {
     position: absolute;
@@ -7,7 +11,7 @@
     width: $widthNum;
     height: 5px;
     border-radius: 5px;
-    background-color: #ffd740;
+    background-color: $accentColor;
     opacity: 0.8;
   }
 }
