@@ -1,4 +1,4 @@
-@import '../../../styles/variables.scss';
+@import '../../styles/variables.scss';
 
 .meals-container {
   padding: 20px 0;
@@ -12,8 +12,8 @@
     .first-row {
       .image-container {
         img {
-          width: 175px;
-          height: 175px;
+          width: 150px;
+          height: 150px;
           border-radius: 50%;
         }
       }

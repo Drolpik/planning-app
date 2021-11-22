@@ -24,7 +24,7 @@ export class SignupActivityAndGoalStepComponent {
   ];
 
   activityLevels: ActivityLevels[] = [
-    { value: 'Lack, sedentary work' },
+    { value: 'Lack (sedentary work)' },
     { value: 'Low (1-2 workouts, sedentary work)' },
     { value: 'Moderate (3-4 workouts, sedentary work)' },
     { value: 'Active (3-4 workouts, work in motion)' },

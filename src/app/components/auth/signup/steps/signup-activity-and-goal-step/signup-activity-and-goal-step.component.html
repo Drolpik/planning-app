@@ -1,4 +1,7 @@
-<app-form-container [formSectionName]="'Activity and Goal'">
+<app-form-container
+  formStyleName="form-activity-and-goal"
+  formSectionName="Activity and Goal"
+>
   <div
     [formGroup]="signUpForm"
     fxLayout="column"
@@ -10,8 +13,12 @@
         <mat-label>Activity level</mat-label>
         <mat-select formControlName="activityLevel" required>
           <mat-option
-            *ngFor="let activity of activityLevels"
-            [value]="activity.value.split(' ')[0]"
+            *ngFor="let activity of activityLevels; let last = last"
+            [value]="
+              !last
+                ? activity.value.split(' ')[0]
+                : activity.value.split(' ').splice(0, 2).join(' ')
+            "
           >
             {{ activity.value }}
           </mat-option>

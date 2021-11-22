@@ -1,0 +1,47 @@
+@import '../../styles/variables.scss';
+
+.container {
+  height: 100%;
+
+  .form-account,
+  .form-personal,
+  .form-activity-and-goal,
+  .form-summary,
+  .form-user-data,
+  .form-login {
+    position: relative;
+  }
+
+  .form-account {
+    @include underlineText(78px);
+  }
+
+  .form-personal {
+    @include underlineText(83px);
+  }
+
+  .form-activity-and-goal {
+    @include underlineText(168px);
+  }
+
+  .form-summary {
+    @include underlineText(86px);
+  }
+
+  .form-user-data {
+    @include underlineText(90px);
+  }
+
+  .form-login {
+    @include underlineText(50px);
+  }
+
+  .card-container {
+    width: 80%;
+    max-width: 400px;
+
+    .mat-card {
+      margin-top: 20px;
+    }
+  }
+}

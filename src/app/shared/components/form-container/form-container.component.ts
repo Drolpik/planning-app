@@ -7,4 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class FormContainerComponent {
   @Input() formSectionName: string;
+
+  @Input() formStyleName: string;
 }
