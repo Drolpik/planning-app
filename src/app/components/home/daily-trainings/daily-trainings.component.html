@@ -1,18 +1,172 @@
 <div>
   <h1 class="section-header">Training status</h1>
   <mat-card>
-    <div
-      class="content-container"
-      fxLayout="column"
-      fxLayoutAlign="center center"
-    >
-      <ng-container *ngIf="!trainingsStatus">
+    <div class="content-container" fxLayout="column">
+      <div
+        *ngIf="!trainingsStatus; else trainingSection"
+        fxLayoutAlign="center center"
+        fxLayout="column"
+      >
         <img
           class="no-training-needed-img"
           src="../../../../assets/finish.svg"
         />
         <h3 class="no-training-needed-header">No training needed</h3>
-      </ng-container>
+      </div>
+      <ng-template #trainingSection>
+        <div class="training-container" fxLayout="column">
+          <div
+            class="info-container"
+            fxLayout="row"
+            fxLayoutAlign="space-around"
+          >
+            <div
+              class="calories-info"
+              fxLayout="column"
+              fxLayoutAlign="center flex-start"
+            >
+              <h3 class="info-header">Calorie limit exceeded!</h3>
+              <div fxLayoutAlign="center center">
+                <mat-icon>local_fire_department</mat-icon>
+                <span class="calories-to-burn-label">
+                  To burn: {{ excessCalories }} kcal
+                </span>
+              </div>
+            </div>
+            <div>
+              <img
+                class="start-workout-image"
+                src="../../../../assets/start_workout.svg"
+              />
+            </div>
+          </div>
+
+          <div class="exercise-selection-container">
+            <mat-tab-group dynamicHeight>
+              <mat-tab label="Type and intensity">
+                <form
+                  [formGroup]="typeAndIntensityForm"
+                  class="tab-container"
+                  fxLayoutGap="20px"
+                >
+                  <mat-form-field>
+                    <mat-label>Workout type</mat-label>
+                    <mat-select formControlName="type" required>
+                      <mat-option
+                        *ngFor="let type of workoutTypes"
+                        [value]="type.value"
+                      >
+                        {{ type.value }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="
+                        typeAndIntensityForm.get('type')?.hasError('required')
+                      "
+                      >This field is required</mat-error
+                    >
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <mat-label>Intensity levels</mat-label>
+                    <mat-select formControlName="intensity" required>
+                      <mat-option
+                        *ngFor="let level of intensityLevels"
+                        [value]="level.value"
+                      >
+                        {{ level.value }}
+                      </mat-option>
+                    </mat-select>
+                    <mat-error
+                      *ngIf="
+                        typeAndIntensityForm
+                          .get('intensity')
+                          ?.hasError('required')
+                      "
+                      >This field is required</mat-error
+                    >
+                  </mat-form-field>
+
+                  <button
+                    type="submit"
+                    mat-raised-button
+                    color="primary"
+                    (click)="searchByTypeAndIntensity()"
+                  >
+                    Search
+                  </button>
+                </form>
+              </mat-tab>
+              <mat-tab label="Choose from the list">
+                <form
+                  [formGroup]="chooseFromTheListForm"
+                  class="tab-container"
+                  fxLayoutGap="20px"
+                >
+                  <mat-form-field>
+                    <mat-label>Activity</mat-label>
+                    <input
+                      type="text"
+                      placeholder="Pick one activity"
+                      matInput
+                      formControlName="activity"
+                      [matAutocomplete]="auto"
+                      required
+                    />
+                    <mat-autocomplete
+                      #auto="matAutocomplete"
+                      [displayWith]="displayFn"
+                    >
+                      <mat-option
+                        *ngFor="let option of filteredOptions | async"
+                        [value]="option"
+                      >
+                        {{ option.exercise }}
+                      </mat-option>
+                    </mat-autocomplete>
+                    <mat-error
+                      *ngIf="
+                        chooseFromTheListForm
+                          .get('activity')
+                          ?.hasError('required')
+                      "
+                      >This field is required</mat-error
+                    >
+                    <mat-error
+                      *ngIf="
+                        chooseFromTheListForm.controls.activity.errors
+                          ?.forbiddenObject
+                      "
+                      >Select an available activity</mat-error
+                    >
+                  </mat-form-field>
+
+                  <button
+                    type="submit"
+                    mat-raised-button
+                    color="primary"
+                    (click)="submitActivity()"
+                  >
+                    Submit
+                  </button>
+                </form>
+              </mat-tab>
+              <mat-tab label="Pick for me">
+                <div class="tab-container">
+                  <button
+                    type="submit"
+                    mat-raised-button
+                    color="primary"
+                    (click)="pickRandomWorkout()"
+                  >
+                    Get random workout
+                  </button>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </mat-card>
 </div>

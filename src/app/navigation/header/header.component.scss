@@ -4,7 +4,14 @@ a {
 
   &:hover,
   &:active {
-    color: lightgray;
+    color: #d3d3d3;
+  }
+}
+
+button {
+  &:hover,
+  &:active {
+    color: #d3d3d3;
   }
 }
 
