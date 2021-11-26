@@ -1,0 +1,35 @@
+<form [formGroup]="typeAndIntensityForm" fxLayoutGap="20px">
+  <mat-form-field>
+    <mat-label>Workout type</mat-label>
+    <mat-select formControlName="type" required>
+      <mat-option *ngFor="let type of workoutTypes" [value]="type.value">
+        {{ type.value }}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="typeAndIntensityForm.get('type')?.hasError('required')"
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Intensity levels</mat-label>
+    <mat-select formControlName="intensity" required>
+      <mat-option *ngFor="let level of intensityLevels" [value]="level.value">
+        {{ level.value }}
+      </mat-option>
+    </mat-select>
+    <mat-error
+      *ngIf="typeAndIntensityForm.get('intensity')?.hasError('required')"
+      >This field is required</mat-error
+    >
+  </mat-form-field>
+
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    (click)="searchByTypeAndIntensity()"
+  >
+    Search
+  </button>
+</form>

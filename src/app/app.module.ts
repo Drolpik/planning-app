@@ -28,6 +28,10 @@ import { SearchMealsFormComponent } from './components/search-meals/search-optio
 import { DailyTrainingsComponent } from './components/home/daily-trainings/daily-trainings.component';
 import { SignupActivityAndGoalStepComponent } from './components/auth/signup/steps/signup-activity-and-goal-step/signup-activity-and-goal-step.component';
 import { UserDataComponent } from './components/user-data/user-data.component';
+import { TrainingsExpandListComponent } from './components/home/daily-trainings/trainings-expand-list/trainings-expand-list.component';
+import { TypeAndIntensityTabComponent } from './components/home/daily-trainings/training-tabs/type-and-intensity-tab/type-and-intensity-tab.component';
+import { ChooseFromListTabComponent } from './components/home/daily-trainings/training-tabs/choose-from-list-tab/choose-from-list-tab.component';
+import { PickForMeTabComponent } from './components/home/daily-trainings/training-tabs/pick-for-me-tab/pick-for-me-tab.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +55,11 @@ import { UserDataComponent } from './components/user-data/user-data.component';
     SearchMealsFormComponent,
     DailyTrainingsComponent,
     SignupActivityAndGoalStepComponent,
-    UserDataComponent
+    UserDataComponent,
+    TrainingsExpandListComponent,
+    TypeAndIntensityTabComponent,
+    ChooseFromListTabComponent,
+    PickForMeTabComponent
   ],
   imports: [
     MaterialModule,

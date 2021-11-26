@@ -44,123 +44,23 @@
           <div class="exercise-selection-container">
             <mat-tab-group dynamicHeight>
               <mat-tab label="Type and intensity">
-                <form
-                  [formGroup]="typeAndIntensityForm"
-                  class="tab-container"
-                  fxLayoutGap="20px"
-                >
-                  <mat-form-field>
-                    <mat-label>Workout type</mat-label>
-                    <mat-select formControlName="type" required>
-                      <mat-option
-                        *ngFor="let type of workoutTypes"
-                        [value]="type.value"
-                      >
-                        {{ type.value }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error
-                      *ngIf="
-                        typeAndIntensityForm.get('type')?.hasError('required')
-                      "
-                      >This field is required</mat-error
-                    >
-                  </mat-form-field>
-
-                  <mat-form-field>
-                    <mat-label>Intensity levels</mat-label>
-                    <mat-select formControlName="intensity" required>
-                      <mat-option
-                        *ngFor="let level of intensityLevels"
-                        [value]="level.value"
-                      >
-                        {{ level.value }}
-                      </mat-option>
-                    </mat-select>
-                    <mat-error
-                      *ngIf="
-                        typeAndIntensityForm
-                          .get('intensity')
-                          ?.hasError('required')
-                      "
-                      >This field is required</mat-error
-                    >
-                  </mat-form-field>
-
-                  <button
-                    type="submit"
-                    mat-raised-button
-                    color="primary"
-                    (click)="searchByTypeAndIntensity()"
-                  >
-                    Search
-                  </button>
-                </form>
+                <div class="tab-container">
+                  <app-type-and-intensity-tab></app-type-and-intensity-tab>
+                </div>
               </mat-tab>
               <mat-tab label="Choose from the list">
-                <form
-                  [formGroup]="chooseFromTheListForm"
-                  class="tab-container"
-                  fxLayoutGap="20px"
-                >
-                  <mat-form-field>
-                    <mat-label>Activity</mat-label>
-                    <input
-                      type="text"
-                      placeholder="Pick one activity"
-                      matInput
-                      formControlName="activity"
-                      [matAutocomplete]="auto"
-                      required
-                    />
-                    <mat-autocomplete
-                      #auto="matAutocomplete"
-                      [displayWith]="displayFn"
-                    >
-                      <mat-option
-                        *ngFor="let option of filteredOptions | async"
-                        [value]="option"
-                      >
-                        {{ option.exercise }}
-                      </mat-option>
-                    </mat-autocomplete>
-                    <mat-error
-                      *ngIf="
-                        chooseFromTheListForm
-                          .get('activity')
-                          ?.hasError('required')
-                      "
-                      >This field is required</mat-error
-                    >
-                    <mat-error
-                      *ngIf="
-                        chooseFromTheListForm.controls.activity.errors
-                          ?.forbiddenObject
-                      "
-                      >Select an available activity</mat-error
-                    >
-                  </mat-form-field>
-
-                  <button
-                    type="submit"
-                    mat-raised-button
-                    color="primary"
-                    (click)="submitActivity()"
-                  >
-                    Submit
-                  </button>
-                </form>
+                <div class="tab-container">
+                  <app-choose-from-list-tab
+                    [trainingsData]="trainingsData"
+                  ></app-choose-from-list-tab>
+                </div>
               </mat-tab>
               <mat-tab label="Pick for me">
                 <div class="tab-container">
-                  <button
-                    type="submit"
-                    mat-raised-button
-                    color="primary"
-                    (click)="pickRandomWorkout()"
-                  >
-                    Get random workout
-                  </button>
+                  <app-pick-for-me-tab
+                    [caloriesToBurn]="excessCalories"
+                    [trainingsData]="trainingsData"
+                  ></app-pick-for-me-tab>
                 </div>
               </mat-tab>
             </mat-tab-group>

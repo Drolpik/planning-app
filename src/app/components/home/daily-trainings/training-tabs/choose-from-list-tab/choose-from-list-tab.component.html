@@ -1,0 +1,38 @@
+<form [formGroup]="chooseFromTheListForm" fxLayoutGap="20px">
+  <mat-form-field>
+    <mat-label>Activity</mat-label>
+    <input
+      type="text"
+      placeholder="Pick one activity"
+      matInput
+      formControlName="activity"
+      [matAutocomplete]="auto"
+      required
+    />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option
+        *ngFor="let option of filteredOptions | async"
+        [value]="option"
+      >
+        {{ option.exercise }}
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error
+      *ngIf="chooseFromTheListForm.get('activity')?.hasError('required')"
+      >This field is required</mat-error
+    >
+    <mat-error
+      *ngIf="chooseFromTheListForm.controls.activity.errors?.forbiddenObject"
+      >Select an available activity</mat-error
+    >
+  </mat-form-field>
+
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    (click)="submitActivity()"
+  >
+    Submit
+  </button>
+</form>

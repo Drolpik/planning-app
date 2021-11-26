@@ -10,3 +10,9 @@ export const traininsData = [
     met: 8.3
   }
 ];
+
+export interface TrainingsData {
+  id: number;
+  exercise: string;
+  met: number;
+}
