@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
+
 import { TrainingsData } from '../../trainings-data';
 
 export function forbiddenObjectValidator(control: AbstractControl) {
@@ -47,7 +48,7 @@ export class ChooseFromListTabComponent {
   submitActivity(): void {
     if (this.chooseFromTheListForm.valid) {
       console.log('Form submitted! -> choose from the list');
-      console.log(this.chooseFromTheListForm.value);
+      console.log(this.chooseFromTheListForm.value.activity);
     } else {
       this.chooseFromTheListForm.markAllAsTouched();
     }

@@ -2,10 +2,12 @@ import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface WorkoutTypes {
+  id: number;
   value: string;
 }
 
 interface IntensityLevels {
+  id: number;
   value: string;
 }
 
@@ -17,12 +19,21 @@ interface IntensityLevels {
 export class TypeAndIntensityTabComponent {
   typeAndIntensityForm: FormGroup;
 
-  workoutTypes: WorkoutTypes[] = [{ value: 'Outdoor' }, { value: 'Home' }];
+  workoutTypes: WorkoutTypes[] = [
+    { id: 1, value: 'running' },
+    { id: 2, value: 'walking' },
+    { id: 3, value: 'bicycling' },
+    { id: 4, value: 'conditioning exercise' },
+    { id: 5, value: 'dancing' },
+    { id: 6, value: 'home activities' },
+    { id: 7, value: 'sports' },
+    { id: 8, value: 'water activities' }
+  ];
 
   intensityLevels: IntensityLevels[] = [
-    { value: 'Light' },
-    { value: 'Average' },
-    { value: 'Hight' }
+    { id: 1, value: 'light' },
+    { id: 2, value: 'moderate' },
+    { id: 3, value: 'hight' }
   ];
 
   constructor(private fb: FormBuilder) {}

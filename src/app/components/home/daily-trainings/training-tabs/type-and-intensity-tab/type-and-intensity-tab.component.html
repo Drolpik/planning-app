@@ -2,7 +2,7 @@
   <mat-form-field>
     <mat-label>Workout type</mat-label>
     <mat-select formControlName="type" required>
-      <mat-option *ngFor="let type of workoutTypes" [value]="type.value">
+      <mat-option *ngFor="let type of workoutTypes" [value]="type">
         {{ type.value }}
       </mat-option>
     </mat-select>
@@ -14,7 +14,7 @@
   <mat-form-field>
     <mat-label>Intensity levels</mat-label>
     <mat-select formControlName="intensity" required>
-      <mat-option *ngFor="let level of intensityLevels" [value]="level.value">
+      <mat-option *ngFor="let level of intensityLevels" [value]="level">
         {{ level.value }}
       </mat-option>
     </mat-select>

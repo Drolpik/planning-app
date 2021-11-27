@@ -10,7 +10,7 @@
         {{ calculateWorkoutTime(training) }} min
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <button mat-button color="primary">
+    <button mat-button color="primary" (click)="selectExercise(training)">
       <mat-icon>add</mat-icon>
       Select this exercise
     </button>

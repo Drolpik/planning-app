@@ -8,8 +8,10 @@
 </button>
 
 <div *ngIf="buttonClick" class="results-container" fxLayoutAlign="center">
-  <app-trainings-expand-list
-    [caloriesToBurn]="caloriesToBurn"
-    [trainingsData]="randomTraining"
-  ></app-trainings-expand-list>
+  <div fxFlex="75">
+    <app-trainings-expand-list
+      [caloriesToBurn]="caloriesToBurn"
+      [trainingsData]="randomTraining"
+    ></app-trainings-expand-list>
+  </div>
 </div>

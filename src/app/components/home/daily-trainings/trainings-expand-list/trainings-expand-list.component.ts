@@ -26,4 +26,8 @@ export class TrainingsExpandListComponent {
       this.tempUserWeight
     );
   }
+
+  selectExercise(selectedTraining: TrainingsData): void {
+    console.log(selectedTraining);
+  }
 }

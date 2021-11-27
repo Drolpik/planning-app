@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,9 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
 
-  formSubmitted = false;
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -21,8 +21,16 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log('Form submitted!');
-    console.log(this.loginForm.value);
-    this.formSubmitted = true;
+    if (this.loginForm.valid) {
+      console.log('Form submitted! -> login:');
+      console.log(this.loginForm.value);
+
+      this.authService.login({
+        email: this.loginForm.value.login,
+        password: this.loginForm.value.password
+      });
+    } else {
+      this.loginForm.markAllAsTouched();
+    }
   }
 }

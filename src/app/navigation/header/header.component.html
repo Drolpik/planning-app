@@ -9,7 +9,7 @@
     </div>
     <div fxFlex fxLayout fxLayoutAlign="flex-end">
       <ul fxLayout fxLayoutGap="20px" class="navigation-items">
-        <li routerLink="/user-data">
+        <li *ngIf="isAuth" routerLink="/user-data">
           <button mat-icon-button>
             <mat-icon>settings</mat-icon>
           </button>
@@ -19,9 +19,17 @@
             <mat-icon>person_outline</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
-            <button mat-menu-item>
+            <button *ngIf="isAuth" mat-menu-item (click)="onLogout()">
               <mat-icon>logout</mat-icon>
               Logout
+            </button>
+            <button *ngIf="!isAuth" mat-menu-item routerLink="/signup">
+              <mat-icon>face</mat-icon>
+              Signup
+            </button>
+            <button *ngIf="!isAuth" mat-menu-item routerLink="/login">
+              <mat-icon>login</mat-icon>
+              Login
             </button>
           </mat-menu>
         </li>

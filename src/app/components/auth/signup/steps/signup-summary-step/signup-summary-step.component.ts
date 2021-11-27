@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { AuthService } from '../../../auth.service';
+
 @Component({
   selector: 'app-signup-summary-step',
   templateUrl: './signup-summary-step.component.html',
@@ -9,11 +11,16 @@ import { FormGroup } from '@angular/forms';
 export class SignupSummaryStepComponent {
   @Input() signUpForm: FormGroup;
 
-  formSubmitted = false;
+  constructor(private authService: AuthService) {}
 
   submit() {
-    console.log('Form submitted!');
-    console.log(this.signUpForm.value);
-    this.formSubmitted = true;
+    if (this.signUpForm.valid) {
+      console.log('Form submitted! -> signUp:');
+      console.log(this.signUpForm.value);
+
+      this.authService.signUp(this.signUpForm.value);
+    } else {
+      this.signUpForm.markAllAsTouched();
+    }
   }
 }
