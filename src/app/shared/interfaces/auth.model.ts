@@ -1,3 +1,10 @@
+export interface User {
+  email: string;
+  userId: string;
+  userPersonal?: object;
+  activityAndGoal?: object;
+}
+
 export interface AuthDataSignUp {
   userAccount: {
     email: string;

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
+
+import { TrainingsData } from 'src/app/shared/interfaces/trainingsData.model';
 import { CommonsMethodsService } from 'src/app/shared/services/commons-methods.service';
-import { TrainingsData } from '../trainings-data';
 
 @Component({
   selector: 'app-trainings-expand-list',

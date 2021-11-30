@@ -4,6 +4,15 @@
 
 export const environment = {
   production: false,
+  firebase: {
+    apiKey: 'AIzaSyCK7dpUMPOGZtQmFbD0Z0HKjBCDGj56ULg',
+    authDomain: 'planning-app-405bd.firebaseapp.com',
+    projectId: 'planning-app-405bd',
+    storageBucket: 'planning-app-405bd.appspot.com',
+    messagingSenderId: '734060174467',
+    appId: '1:734060174467:web:819f66253338dd7fc18fb6',
+    measurementId: 'G-C4GWSL84MY'
+  }
 };
 
 /*

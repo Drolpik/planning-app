@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TrainingsData } from 'src/app/components/home/daily-trainings/trainings-data';
+import { TrainingsData } from '../interfaces/trainingsData.model';
 
 @Injectable({
   providedIn: 'root'

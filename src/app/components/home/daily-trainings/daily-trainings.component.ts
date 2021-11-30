@@ -1,16 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import { traininsData } from './trainings-data';
+import { Subscription } from 'rxjs';
+import { TrainingsService } from 'src/app/core/services/trainings/trainings.service';
+import { TrainingsData } from 'src/app/shared/interfaces/trainingsData.model';
 
 @Component({
   selector: 'app-daily-trainings',
   templateUrl: './daily-trainings.component.html',
   styleUrls: ['./daily-trainings.component.scss']
 })
-export class DailyTrainingsComponent {
+export class DailyTrainingsComponent implements OnInit, OnDestroy {
   trainingsStatus = true;
 
   excessCalories = 500;
 
-  trainingsData = traininsData;
+  trainingsData: TrainingsData[] = [];
+
+  trainingsDataSubscription: Subscription;
+
+  constructor(private trainingsService: TrainingsService) {}
+
+  ngOnInit(): void {
+    this.trainingsDataSubscription =
+      this.trainingsService.trainingsDataChanged.subscribe((trainings) => {
+        this.trainingsData = trainings;
+        console.log(trainings);
+      });
+    this.trainingsService.fetchTrainingsData();
+    console.log(this.trainingsData);
+  }
+
+  ngOnDestroy(): void {
+    this.trainingsDataSubscription.unsubscribe();
+  }
 }

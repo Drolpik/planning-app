@@ -5,10 +5,10 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
+
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
-import { TrainingsData } from '../../trainings-data';
+import { TrainingsData } from 'src/app/shared/interfaces/trainingsData.model';
 
 export function forbiddenObjectValidator(control: AbstractControl) {
   return typeof control.value !== 'object' || control.value === null

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { TrainingsData } from '../../trainings-data';
+
+import { TrainingsData } from 'src/app/shared/interfaces/trainingsData.model';
 
 @Component({
   selector: 'app-pick-for-me-tab',

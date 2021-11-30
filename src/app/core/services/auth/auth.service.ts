@@ -1,8 +1,11 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthDataSignUp, AuthDataLogin } from './auth-data.model';
-import { User } from './user.model';
+import {
+  AuthDataSignUp,
+  AuthDataLogin,
+  User
+} from '../../../shared/interfaces/auth.model';
 
 @Injectable()
 export class AuthService {

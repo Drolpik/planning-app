@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material/material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { AppComponent } from './app.component';
 import { SignupComponent } from './components/auth/signup/signup.component';
@@ -32,7 +34,9 @@ import { TrainingsExpandListComponent } from './components/home/daily-trainings/
 import { TypeAndIntensityTabComponent } from './components/home/daily-trainings/training-tabs/type-and-intensity-tab/type-and-intensity-tab.component';
 import { ChooseFromListTabComponent } from './components/home/daily-trainings/training-tabs/choose-from-list-tab/choose-from-list-tab.component';
 import { PickForMeTabComponent } from './components/home/daily-trainings/training-tabs/pick-for-me-tab/pick-for-me-tab.component';
-import { AuthService } from './components/auth/auth.service';
+
+import { AuthService } from './core/services/auth/auth.service';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -68,7 +72,9 @@ import { AuthService } from './components/auth/auth.service';
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
