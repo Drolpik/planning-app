@@ -24,10 +24,8 @@ export class DailyTrainingsComponent implements OnInit, OnDestroy {
     this.trainingsDataSubscription =
       this.trainingsService.trainingsDataChanged.subscribe((trainings) => {
         this.trainingsData = trainings;
-        console.log(trainings);
       });
     this.trainingsService.fetchTrainingsData();
-    console.log(this.trainingsData);
   }
 
   ngOnDestroy(): void {

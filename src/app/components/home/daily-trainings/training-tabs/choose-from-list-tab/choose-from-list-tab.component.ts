@@ -46,6 +46,7 @@ export class ChooseFromListTabComponent {
   }
 
   submitActivity(): void {
+    console.log(this.trainingsData);
     if (this.chooseFromTheListForm.valid) {
       console.log('Form submitted! -> choose from the list');
       console.log(this.chooseFromTheListForm.value.activity);
