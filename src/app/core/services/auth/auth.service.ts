@@ -25,8 +25,16 @@ export class AuthService {
     });
   }
 
-  get isAuth(): boolean {
-    return this.authState !== null;
+  initAuthListener(): void {
+    this.afAuth.authState.subscribe((user) => {
+      if (user) {
+        this.authStatus.next(true);
+        this.router.navigate(['']);
+      } else {
+        this.authStatus.next(false);
+        this.router.navigate(['/login']);
+      }
+    });
   }
 
   signUp(authData: AuthDataSignUp) {
@@ -55,7 +63,6 @@ export class AuthService {
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((result) => {
         console.log(result);
-        this.authChangeStatusAndNavigateTo(true, '');
       })
       .catch((error) => {
         console.log(error);
@@ -64,12 +71,9 @@ export class AuthService {
 
   logout() {
     this.afAuth.signOut();
-    this.authStatus.next(false);
-    this.authChangeStatusAndNavigateTo(false, 'login');
   }
 
-  private authChangeStatusAndNavigateTo(status: boolean, navTo: string) {
-    this.authStatus.next(status);
-    this.router.navigate([`/${navTo}`]);
+  get isAuth(): boolean {
+    return this.authState !== null;
   }
 }
