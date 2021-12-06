@@ -1,8 +1,6 @@
-export interface User {
+export interface AuthDataLogin {
   email: string;
-  userId: string;
-  userPersonal?: object;
-  activityAndGoal?: object;
+  password: string;
 }
 
 export interface AuthDataSignUp {
@@ -20,9 +18,4 @@ export interface AuthDataSignUp {
     activityLevel: string;
     dietGoal: string;
   };
-}
-
-export interface AuthDataLogin {
-  email: string;
-  password: string;
 }

@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
 
+import { Subject } from 'rxjs';
 import {
-  AuthDataSignUp,
-  AuthDataLogin
+  AuthDataLogin,
+  AuthDataSignUp
 } from '../../../shared/interfaces/auth.model';
-import { TrainingsService } from '../trainings/trainings.service';
+import { DailyProgressService } from '../daily-progress/daily-progress.service';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +19,8 @@ export class AuthService {
   constructor(
     private router: Router,
     private afAuth: AngularFireAuth,
-    private trainingsService: TrainingsService
+    private userService: UserService,
+    private dailyProgressService: DailyProgressService
   ) {
     this.afAuth.authState.subscribe((authState) => {
       this.authState = authState;
@@ -37,20 +39,24 @@ export class AuthService {
     });
   }
 
-  signUp(authData: AuthDataSignUp) {
-    // this.user = {
-    //   email: authData.userAccount.email,
-    //   userId: Math.round(Math.random() * 10000).toString(),
-    //   userPersonal: authData.userPersonal,
-    //   activityAndGoal: authData.activityAndGoal
-    // };
+  signUp(userData: AuthDataSignUp) {
     this.afAuth
       .createUserWithEmailAndPassword(
-        authData.userAccount.email,
-        authData.userAccount.password
+        userData.userAccount.email,
+        userData.userAccount.password
       )
-      .then((result) => {
-        console.log(result);
+      .then((userCredential) => {
+        const uid = userCredential.user?.uid;
+        this.userService.createUser(uid, {
+          ...userData.userPersonal,
+          ...userData.activityAndGoal
+        });
+        this.dailyProgressService.createDailyProgressData(uid, {
+          ...userData.userPersonal,
+          ...userData.activityAndGoal
+        });
+      })
+      .then(() => {
         this.router.navigate(['/login']);
       })
       .catch((error) => {
@@ -75,5 +81,9 @@ export class AuthService {
 
   get isAuth(): boolean {
     return this.authState !== null;
+  }
+
+  get currentUserId(): string {
+    return this.isAuth ? this.authState.uid : null;
   }
 }

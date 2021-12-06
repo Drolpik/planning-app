@@ -77,7 +77,7 @@
         <mat-select formControlName="activityLevel" required>
           <mat-option
             *ngFor="let activity of activityLevels"
-            [value]="activity.value.split(' ')[0]"
+            [value]="activity.code"
           >
             {{ activity.value }}
           </mat-option>
