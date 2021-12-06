@@ -1,2 +1,7 @@
+@import '../../../shared/styles/variables.scss';
+
 .login-container {
+  .login-image {
+    @include formImage(325px, -370px);
+  }
 }

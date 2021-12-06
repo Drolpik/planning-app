@@ -1,3 +1,5 @@
+@import '../../../../../shared/styles/variables.scss';
+
 .header {
   font-weight: 500;
 }
@@ -16,4 +18,8 @@
   .submit-button {
     margin-left: 5px;
   }
+}
+
+.summary-image {
+  @include formImage(300px, -400px, -20px);
 }

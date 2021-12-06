@@ -1,3 +1,5 @@
+@import '../../../../../shared/styles/variables.scss';
+
 .birth-field {
   width: 50%;
 }
@@ -31,4 +33,8 @@
   .next-button {
     margin-left: 5px;
   }
+}
+
+.userPersonal-image {
+  @include formImage(300px, -400px, -20px);
 }

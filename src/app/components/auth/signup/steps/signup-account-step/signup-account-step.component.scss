@@ -1,3 +1,9 @@
+@import '../../../../../shared/styles/variables.scss';
+
 .mat-form-field {
   width: 80%;
+}
+
+.userAccount-image {
+  @include formImage(300px, -400px);
 }

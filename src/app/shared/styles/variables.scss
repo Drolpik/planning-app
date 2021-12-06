@@ -15,3 +15,11 @@ $warnColor: #f44336;
     opacity: 0.8;
   }
 }
+
+@mixin formImage($widtHeightNum, $leftNum, $topNum: -60px) {
+  position: absolute;
+  width: $widtHeightNum;
+  height: $widtHeightNum;
+  left: $leftNum;
+  top: $topNum;
+}
