@@ -1,3 +1,5 @@
+@import '../../shared/styles/variables.scss';
+
 .user-data-container {
   .height-container,
   .weight-container {
@@ -7,5 +9,9 @@
     .weight-field {
       width: 70%;
     }
+  }
+
+  .userData-image {
+    @include formImage(300px, -400px, -20px);
   }
 }
