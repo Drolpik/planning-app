@@ -62,9 +62,6 @@ export class UserDataComponent implements OnInit, OnDestroy {
 
   async save(): Promise<void> {
     if (this.userDataForm.valid) {
-      console.log('Form submitted! -> UserData:');
-      console.log(this.userDataForm.value);
-
       const data = await this.userDataForm.value;
       this.userService.updateUserData(this.authService.currentUserId, data);
 

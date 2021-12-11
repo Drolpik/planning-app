@@ -49,7 +49,6 @@ export class DailyProgressComponent implements OnInit, OnDestroy {
     this.dailyProgressDataSub = this.dailyProgressService
       .getDailyProgressData(this.authService.currentUserId)
       .subscribe((currentData: any) => {
-        console.log(currentData);
         this.setDailyVariables(currentData);
         this.setDailyProgress();
         this.setProgressArray();

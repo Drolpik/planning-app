@@ -63,7 +63,6 @@ export class TypeAndIntensityTabComponent implements OnDestroy {
       this.trainingService.searchTrainingsDataChanged.subscribe(
         (searchTrainings) => {
           this.resultTrainings = searchTrainings;
-          console.log(this.resultTrainings);
         }
       );
   }

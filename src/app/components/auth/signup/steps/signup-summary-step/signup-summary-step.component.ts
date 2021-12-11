@@ -15,9 +15,6 @@ export class SignupSummaryStepComponent {
 
   submit() {
     if (this.signUpForm.valid) {
-      console.log('Form submitted! -> signUp:');
-      console.log(this.signUpForm.value);
-
       this.authService.signUp(this.signUpForm.value);
     } else {
       this.signUpForm.markAllAsTouched();
