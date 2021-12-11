@@ -1,5 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+
+import { TrainingsService } from 'src/app/core/services/trainings/trainings.service';
+import { TrainingsData } from 'src/app/shared/interfaces/trainingsData.model';
 
 interface WorkoutTypes {
   id: number;
@@ -16,8 +20,16 @@ interface IntensityLevels {
   templateUrl: './type-and-intensity-tab.component.html',
   styleUrls: ['./type-and-intensity-tab.component.scss']
 })
-export class TypeAndIntensityTabComponent {
+export class TypeAndIntensityTabComponent implements OnDestroy {
+  @Input() caloriesToBurn: number;
+
   typeAndIntensityForm: FormGroup;
+
+  formSubmitted = false;
+
+  resultTrainings: TrainingsData[] = [];
+
+  typeAndIntensitySub: Subscription;
 
   workoutTypes: WorkoutTypes[] = [
     { id: 1, value: 'running' },
@@ -36,19 +48,55 @@ export class TypeAndIntensityTabComponent {
     { id: 3, value: 'hight' }
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private trainingService: TrainingsService
+  ) {}
 
   ngOnInit(): void {
     this.typeAndIntensityForm = this.fb.group({
       type: [null, Validators.required],
       intensity: [null, Validators.required]
     });
+
+    this.typeAndIntensitySub =
+      this.trainingService.searchTrainingsDataChanged.subscribe(
+        (searchTrainings) => {
+          this.resultTrainings = searchTrainings;
+          console.log(this.resultTrainings);
+        }
+      );
+  }
+
+  ngOnDestroy(): void {
+    this.typeAndIntensitySub.unsubscribe();
   }
 
   searchByTypeAndIntensity(): void {
     if (this.typeAndIntensityForm.valid) {
-      console.log('Form submitted! -> type and intensity:');
-      console.log(this.typeAndIntensityForm.value);
+      this.formSubmitted = true;
+      this.resultTrainings = [];
+
+      switch (this.typeAndIntensityForm.value.intensity.value) {
+        case 'light':
+          this.trainingService.getTrainingByTypeAndLightIntensity(
+            this.typeAndIntensityForm.value.type.value
+          );
+          break;
+        case 'moderate':
+          this.trainingService.getTrainingByTypeAndModerateIntensity(
+            this.typeAndIntensityForm.value.type.value
+          );
+          break;
+        case 'hight':
+          this.trainingService.getTrainingByTypeAndHightIntensity(
+            this.typeAndIntensityForm.value.type.value
+          );
+          break;
+        default:
+          throw new Error('Invalid intensity value');
+          break;
+      }
     } else {
       this.typeAndIntensityForm.markAllAsTouched();
     }

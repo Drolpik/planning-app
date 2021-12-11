@@ -24,7 +24,13 @@ export function forbiddenObjectValidator(control: AbstractControl) {
 export class ChooseFromListTabComponent {
   @Input() trainingsData: TrainingsData[];
 
+  @Input() caloriesToBurn: number;
+
   chooseFromTheListForm: FormGroup;
+
+  formSubmitted = false;
+
+  selectedActivity: TrainingsData[] = [];
 
   filteredOptions: Observable<TrainingsData[]>;
 
@@ -46,10 +52,10 @@ export class ChooseFromListTabComponent {
   }
 
   submitActivity(): void {
-    console.log(this.trainingsData);
     if (this.chooseFromTheListForm.valid) {
-      console.log('Form submitted! -> choose from the list');
-      console.log(this.chooseFromTheListForm.value.activity);
+      this.formSubmitted = true;
+      this.selectedActivity = [];
+      this.selectedActivity.push(this.chooseFromTheListForm.value.activity);
     } else {
       this.chooseFromTheListForm.markAllAsTouched();
     }

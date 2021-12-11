@@ -33,3 +33,21 @@
     Search
   </button>
 </form>
+
+<div *ngIf="formSubmitted" class="results-container" fxLayoutAlign="center">
+  <div fxFlex="75">
+    <app-trainings-expand-list
+      [caloriesToBurn]="caloriesToBurn"
+      [trainingsData]="resultTrainings"
+    ></app-trainings-expand-list>
+
+    <div
+      *ngIf="resultTrainings.length === 0"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+    >
+      <img class="no-data-img" src="../../../../../../assets/empty.svg" />
+      <h3 class="no-results-header">No results</h3>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DailyProgressService } from 'src/app/core/services/daily-progress/daily-progress.service';
@@ -53,6 +53,7 @@ export class DailyProgressComponent implements OnInit, OnDestroy {
         this.setDailyVariables(currentData);
         this.setDailyProgress();
         this.setProgressArray();
+        this.isTrainingNeeded();
       });
   }
 
@@ -104,5 +105,20 @@ export class DailyProgressComponent implements OnInit, OnDestroy {
         limit: this.carbsLimit
       }
     ];
+  }
+
+  isTrainingNeeded(): void {
+    if (this.currentCalories > this.caloriesLimit) {
+      const caloriesToBurn = this.currentCalories - this.caloriesLimit;
+      this.dailyProgressService.caloriesExceeded.next({
+        caloriesExceededStatus: true,
+        caloriesToBurn: caloriesToBurn
+      });
+    } else {
+      this.dailyProgressService.caloriesExceeded.next({
+        caloriesExceededStatus: false,
+        caloriesToBurn: null
+      });
+    }
   }
 }

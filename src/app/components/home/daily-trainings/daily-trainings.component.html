@@ -45,12 +45,15 @@
             <mat-tab-group dynamicHeight>
               <mat-tab label="Type and intensity">
                 <div class="tab-container">
-                  <app-type-and-intensity-tab></app-type-and-intensity-tab>
+                  <app-type-and-intensity-tab
+                    [caloriesToBurn]="excessCalories"
+                  ></app-type-and-intensity-tab>
                 </div>
               </mat-tab>
               <mat-tab label="Choose from the list">
                 <div class="tab-container">
                   <app-choose-from-list-tab
+                    [caloriesToBurn]="excessCalories"
                     [trainingsData]="trainingsData"
                   ></app-choose-from-list-tab>
                 </div>

@@ -1,5 +1,5 @@
 <form [formGroup]="chooseFromTheListForm" fxLayoutGap="20px">
-  <mat-form-field>
+  <mat-form-field class="type-activity-container">
     <mat-label>Activity</mat-label>
     <input
       type="text"
@@ -33,6 +33,15 @@
     color="primary"
     (click)="submitActivity()"
   >
-    Submit
+    Get workout
   </button>
 </form>
+
+<div *ngIf="formSubmitted" class="results-container" fxLayoutAlign="center">
+  <div fxFlex="75">
+    <app-trainings-expand-list
+      [caloriesToBurn]="caloriesToBurn"
+      [trainingsData]="selectedActivity"
+    ></app-trainings-expand-list>
+  </div>
+</div>

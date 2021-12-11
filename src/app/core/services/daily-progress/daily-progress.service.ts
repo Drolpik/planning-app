@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { Subject } from 'rxjs';
 
 import { UserData } from 'src/app/shared/interfaces/userData.model';
 
@@ -9,6 +10,8 @@ import { CommonsMethodsService } from 'src/app/shared/services/commons-methods.s
   providedIn: 'root'
 })
 export class DailyProgressService {
+  caloriesExceeded = new Subject<any>();
+
   constructor(
     private commonsMethodsService: CommonsMethodsService,
     private db: AngularFirestore
@@ -30,11 +33,11 @@ export class DailyProgressService {
       caloriesLimit: macrosPercentages.TEE,
       currentCalories: 0,
       proteinLimit: macrosPercentages.proteinLimit,
-      proteinProgress: 0,
+      currentProtein: 0,
       fatLimit: macrosPercentages.fatLimit,
-      fatProgress: 0,
+      currentFat: 0,
       carbsLimit: macrosPercentages.carbsLimit,
-      carbsProgress: 0
+      currentCarbs: 0
     });
   }
 
@@ -51,6 +54,12 @@ export class DailyProgressService {
       proteinLimit: macrosPercentages.proteinLimit,
       fatLimit: macrosPercentages.fatLimit,
       carbsLimit: macrosPercentages.carbsLimit
+    });
+  }
+
+  updateCurrentCalories(uid: string, calories: number) {
+    this.db.doc(`dailyProgressData/${uid}`).update({
+      currentCalories: calories
     });
   }
 }
