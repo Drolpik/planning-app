@@ -1,4 +1,4 @@
-<h1 mat-dialog-title fxLayoutAlign="center">{{ mealData.name }}</h1>
+<h1 mat-dialog-title fxLayoutAlign="center">{{ mealData.title }}</h1>
 <mat-dialog-content
   class="content-container"
   fxLayout="column"
@@ -7,34 +7,37 @@
   <div
     class="first-row"
     fxLayout
-    fxLayoutAlign="center center"
+    fxLayoutAlign="space-around"
     fxLayoutGap="20px"
   >
-    <div class="image-container">
-      <img src="{{ mealData.image }}" />
+    <div class="img-info-container" fxLayout fxLayoutGap="20px">
+      <div class="image-container">
+        <img src="{{ mealData.image }}" />
+      </div>
+      <div
+        class="meal-basic-info-container"
+        fxLayout="column"
+        fxLayoutAlign="center"
+      >
+        <div class="cook-time-container">
+          <mat-icon>schedule</mat-icon>
+          <span>Ready in {{ mealData.readyInMinutes }} min</span>
+        </div>
+        <div class="calories-container">
+          <mat-icon>local_fire_department</mat-icon>
+          <span
+            >{{ mealData.nutrition.nutrients[0].amount | number: '1.0-0' }}
+            {{ mealData.nutrition.nutrients[0].unit }}</span
+          >
+        </div>
+        <div class="meal-type" *ngIf="mealData.diets.includes('vegan')">
+          <mat-icon>local_dining</mat-icon>
+          <span>Vegan</span>
+        </div>
+      </div>
     </div>
-    <div
-      class="meal-basic-info-container"
-      fxLayout="column"
-      fxLayoutAlign="center"
-      fxFlex="20"
-    >
-      <div class="cook-time-container">
-        <mat-icon>schedule</mat-icon>
-        <span>Ready in {{ mealData.readyInMinutes }} min</span>
-      </div>
-      <div class="calories-container">
-        <mat-icon>local_fire_department</mat-icon>
-        <span>{{ mealData.calories }} kcal</span>
-      </div>
-      <div class="meal-type" *ngIf="mealData.vegan">
-        <mat-icon>local_dining</mat-icon>
-        <span>Vegan</span>
-      </div>
-    </div>
-    <div class="description-container" fxFlex="60">
-      <h3 class="description-header">Description</h3>
-      <p>{{ mealData.fullDescription }}</p>
+    <div>
+      <img class="cooking-image" src="../../../../assets/cooking.svg" />
     </div>
   </div>
 
@@ -46,7 +49,7 @@
           <mat-list-item>
             <span class="ingredient-name" fxFlex="70">{{ item.name }}</span>
             <span class="ingredient-amount" fxFlex="30">
-              {{ item.amount }} g
+              {{ item.amount | number: '1.0-1' }} {{ item.unit }}
             </span>
             <mat-divider *ngIf="!last"></mat-divider>
           </mat-list-item>
@@ -59,7 +62,9 @@
         <ng-container *ngFor="let item of macroList; let last = last">
           <mat-list-item>
             <span class="macro-name" fxFlex="50">{{ item.name }}</span>
-            <span class="macro-amount" fxFlex="50">{{ item.amount }} g</span>
+            <span class="macro-amount" fxFlex="50"
+              >{{ item.amount | number: '1.0-1' }} g</span
+            >
           </mat-list-item>
           <mat-divider *ngIf="!last"></mat-divider>
         </ng-container>
@@ -75,7 +80,7 @@
       >
         <mat-list-item>
           <span class="step-number" fxFlex="10">Step {{ index + 1 }}</span>
-          <span class="step-info" fxFlex="90">{{ step }}</span>
+          <span class="step-info" fxFlex="90">{{ step.step }}</span>
         </mat-list-item>
         <mat-divider *ngIf="!last"></mat-divider>
       </ng-container>

@@ -3,7 +3,7 @@
 .meals-container {
   padding: 20px 0;
   .panel-container {
-    width: 85%;
+    width: 100%;
 
     .panel-title {
       font-weight: 500;
@@ -24,17 +24,6 @@
         .macro-amount {
           text-align: center;
         }
-      }
-    }
-
-    .second-row {
-      margin-top: 20px;
-
-      .description-header {
-        position: relative;
-        font-weight: 500;
-
-        @include underlineText(55px);
       }
     }
 

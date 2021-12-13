@@ -56,7 +56,6 @@ export class CommonsMethodsService {
       default:
         dietMacros = {};
         throw new Error('Invalid activity level');
-        break;
     }
 
     return dietMacros;
@@ -84,7 +83,6 @@ export class CommonsMethodsService {
       default:
         activityMultipler = 0;
         throw new Error('Invalid activity level');
-        break;
     }
 
     return activityMultipler;

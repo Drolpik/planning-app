@@ -1,13 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-
-import { MatChipInputEvent } from '@angular/material/chips';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { mealsData } from 'src/app/components/home/daily-meals/temp.data';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
-interface Ingredient {
-  name: string;
-}
+import { SearchMealsService } from 'src/app/core/services/search-meals/search-meals.service';
 
 interface MealType {
   value: string;
@@ -33,16 +29,20 @@ export class SearchMealsFormComponent implements OnInit {
 
   formSubmitted = false;
 
-  data = mealsData;
+  searchResult: any;
 
   mealType: MealType[] = [
-    { value: 'Vegan' },
-    { value: 'Vegetarian' },
+    { value: 'Gluten Free' },
+    { value: 'Ketogenic' },
     { value: 'Paleo' },
-    { value: 'Ketogenic' }
+    { value: 'Vegan' },
+    { value: 'Vegetarian' }
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private searchMealsService: SearchMealsService
+  ) {}
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -59,13 +59,13 @@ export class SearchMealsFormComponent implements OnInit {
     const value = (event.value || '').trim();
 
     if (value) {
-      this.searchForm.get('ingredients')?.value.push({ name: value });
+      this.searchForm.get('ingredients')?.value.push(value);
     }
 
     event.chipInput?.clear();
   }
 
-  removIngredient(ingredient: Ingredient): void {
+  removIngredient(ingredient: string): void {
     const index = this.searchForm.get('ingredients')?.value.indexOf(ingredient);
 
     if (index >= 0) {
@@ -74,8 +74,29 @@ export class SearchMealsFormComponent implements OnInit {
   }
 
   search(): void {
-    console.log('Search submitted!');
-    console.log(this.searchForm.value);
-    this.formSubmitted = true;
+    if (this.searchForm.valid) {
+      console.log('Search submitted!');
+      this.formSubmitted = true;
+      console.log(this.searchForm.value);
+      if (this.mode === 'advanced') {
+        console.log('Advanced');
+        this.searchMealsService
+          .getMealsByAdvancedSearch(this.searchForm)
+          .subscribe((meals: any) => {
+            this.searchResult = meals.results;
+            console.log(this.searchResult);
+          });
+      } else {
+        console.log('Basic');
+        this.searchMealsService
+          .getMealsByBasicSearch(this.searchForm)
+          .subscribe((meals: any) => {
+            this.searchResult = meals.results;
+            console.log(meals.results);
+          });
+      }
+    } else {
+      this.searchForm.markAllAsTouched();
+    }
   }
 }

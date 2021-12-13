@@ -11,8 +11,6 @@ import { FullMealDialogComponent } from '../full-meal-dialog/full-meal-dialog.co
 export class MealExpandListComponent {
   @Input() data: any;
 
-  @Input() sectionName: string;
-
   @Input() mode: string;
 
   panelOpenState = false;

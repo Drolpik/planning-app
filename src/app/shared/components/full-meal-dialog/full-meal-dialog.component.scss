@@ -6,43 +6,40 @@
   .first-row {
     margin-bottom: 20px;
 
-    .image-container {
-      img {
-        width: 175px;
-        height: 175px;
-        border-radius: 50%;
-      }
-    }
-
-    .meal-basic-info-container {
-      .cook-time-container,
-      .calories-container {
-        display: flex;
-        align-items: center;
-        margin-bottom: 15px;
-
-        span {
-          margin-left: 10px;
+    .img-info-container {
+      .image-container {
+        img {
+          width: 175px;
+          height: 175px;
+          border-radius: 50%;
         }
       }
 
-      .meal-type {
-        display: flex;
-        align-items: center;
+      .meal-basic-info-container {
+        .cook-time-container,
+        .calories-container {
+          display: flex;
+          align-items: center;
+          margin-bottom: 15px;
 
-        span {
-          margin-left: 10px;
+          span {
+            margin-left: 10px;
+          }
+        }
+
+        .meal-type {
+          display: flex;
+          align-items: center;
+
+          span {
+            margin-left: 10px;
+          }
         }
       }
     }
 
-    .description-container {
-      .description-header {
-        position: relative;
-        font-weight: 500;
-
-        @include underlineText(55px);
-      }
+    .cooking-image {
+      width: 150px;
     }
   }
 

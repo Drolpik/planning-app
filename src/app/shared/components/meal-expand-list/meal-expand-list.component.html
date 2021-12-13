@@ -7,45 +7,45 @@
     >
       <mat-expansion-panel-header>
         <mat-panel-title class="panel-title">
-          {{ meal.name }}
+          {{ meal.title }}
         </mat-panel-title>
         <mat-panel-description>
-          {{ meal.calories }} kcal
+          {{ meal.nutrition.nutrients[0].amount | number: '1.0-0' }}
+          {{ meal.nutrition.nutrients[0].unit }}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
-      <div class="first-row" fxLayoutAlign="space-around">
-        <div class="image-container" fxFlex="40">
+      <div class="first-row" fxLayoutAlign="space-between">
+        <div class="image-container">
           <img src="{{ meal.image }}" />
         </div>
-        <div class="macros-container" fxFlex="60" fxLayoutAlign="end center">
+        <div class="macros-container" fxLayoutAlign="end center">
           <mat-list fxFlex="60">
             <mat-list-item>
               <span fxFlex="50">Protein</span>
               <span class="macro-amount" fxFlex="50"
-                >{{ meal.macrosInGram.protein }} g
+                >{{ meal.nutrition.nutrients[8].amount | number: '1.0-0' }}
+                {{ meal.nutrition.nutrients[8].unit }}
               </span>
               <mat-divider></mat-divider>
             </mat-list-item>
             <mat-list-item>
               <span fxFlex="50">Fat</span>
               <span class="macro-amount" fxFlex="50"
-                >{{ meal.macrosInGram.fat }} g
+                >{{ meal.nutrition.nutrients[1].amount | number: '1.0-0' }}
+                {{ meal.nutrition.nutrients[1].unit }}
               </span>
               <mat-divider></mat-divider>
             </mat-list-item>
             <mat-list-item>
               <span fxFlex="50">Carbs</span>
               <span class="macro-amount" fxFlex="50"
-                >{{ meal.macrosInGram.carbs }} g</span
+                >{{ meal.nutrition.nutrients[3].amount | number: '1.0-0' }}
+                {{ meal.nutrition.nutrients[3].unit }}</span
               >
             </mat-list-item>
           </mat-list>
         </div>
-      </div>
-      <div class="second-row">
-        <h3 class="description-header">Description</h3>
-        <p>{{ meal.fullDescription }}</p>
       </div>
 
       <mat-action-row class="buttons-container">

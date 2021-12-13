@@ -28,22 +28,22 @@ export class FullMealDialogComponent implements OnInit {
 
     this.mealData = this.data.mealData;
 
-    this.ingredients = this.mealData.ingredients;
+    this.ingredients = this.mealData.nutrition.ingredients;
 
-    this.steps = this.mealData.steps;
+    this.steps = this.mealData.analyzedInstructions[0].steps;
 
     this.macroList = [
       {
         name: 'Protein',
-        amount: this.mealData.macrosInGram.protein
+        amount: Math.round(this.mealData.nutrition.nutrients[8].amount)
       },
       {
         name: 'Fat',
-        amount: this.mealData.macrosInGram.fat
+        amount: Math.round(this.mealData.nutrition.nutrients[1].amount)
       },
       {
         name: 'Carbs',
-        amount: this.mealData.macrosInGram.carbs
+        amount: Math.round(this.mealData.nutrition.nutrients[3].amount)
       }
     ];
   }

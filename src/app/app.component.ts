@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from './core/services/auth/auth.service';
-import { UserService } from './core/services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -12,10 +12,7 @@ export class AppComponent implements OnInit {
 
   sideBarOpen = true;
 
-  constructor(
-    private authService: AuthService,
-    private userService: UserService
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.authService.initAuthListener();
