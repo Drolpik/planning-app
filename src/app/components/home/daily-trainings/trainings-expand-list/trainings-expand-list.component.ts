@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DailyProgressService } from 'src/app/core/services/daily-progress/daily-progress.service';
 import { UserService } from 'src/app/core/services/user/user.service';
-import { CommonsMethodsService } from 'src/app/shared/services/commons-methods.service';
+import { CommonsMethodsService } from 'src/app/shared/services/commons-methods/commons-methods.service';
 import { TrainingsData } from 'src/app/shared/interfaces/trainingsData.model';
 
 @Component({

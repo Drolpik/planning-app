@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 
 import { UserData } from 'src/app/shared/interfaces/userData.model';
 
-import { CommonsMethodsService } from 'src/app/shared/services/commons-methods.service';
+import { CommonsMethodsService } from 'src/app/shared/services/commons-methods/commons-methods.service';
 
 @Injectable({
   providedIn: 'root'
@@ -41,7 +41,7 @@ export class DailyProgressService {
     });
   }
 
-  updateDailyProgressData(uid: string, userData: UserData) {
+  updateDailyProgressData(uid: string, userData: UserData): void {
     const initTEE = this.commonsMethodsService.calculateTEE(userData);
     const macrosPercentages =
       this.commonsMethodsService.calculateMacrosAndFinalTEE(
@@ -57,7 +57,7 @@ export class DailyProgressService {
     });
   }
 
-  updateCurrentCalories(uid: string, calories: number) {
+  updateCurrentCalories(uid: string, calories: number): void {
     this.db.doc(`dailyProgressData/${uid}`).update({
       currentCalories: calories
     });

@@ -53,16 +53,24 @@ export class SearchMealsService {
           }
           break;
         case 'mealType':
-          queries = queries.concat(`&diet=${searchValues[value]}`);
+          if (searchValues[value]) {
+            queries = queries.concat(`&diet=${searchValues[value]}`);
+          }
           break;
         case 'proteinAmount':
-          queries = queries.concat(`&minProtein=${searchValues[value]}`);
+          if (searchValues[value]) {
+            queries = queries.concat(`&minProtein=${searchValues[value]}`);
+          }
           break;
         case 'fatAmount':
-          queries = queries.concat(`&minFat=${searchValues[value]}`);
+          if (searchValues[value]) {
+            queries = queries.concat(`&minFat=${searchValues[value]}`);
+          }
           break;
         case 'carbsAmount':
-          queries = queries.concat(`&minCarbs	=${searchValues[value]}`);
+          if (searchValues[value]) {
+            queries = queries.concat(`&minCarbs=${searchValues[value]}`);
+          }
           break;
         default:
           throw new Error('Invalid search property');

@@ -7,6 +7,7 @@ import {
   AuthDataLogin,
   AuthDataSignUp
 } from '../../../shared/interfaces/auth.model';
+import { DailyMealsService } from '../daily-meals/daily-meals.service';
 import { DailyProgressService } from '../daily-progress/daily-progress.service';
 import { UserService } from '../user/user.service';
 
@@ -20,7 +21,8 @@ export class AuthService {
     private router: Router,
     private afAuth: AngularFireAuth,
     private userService: UserService,
-    private dailyProgressService: DailyProgressService
+    private dailyProgressService: DailyProgressService,
+    private dailyMealsService: DailyMealsService
   ) {
     this.afAuth.authState.subscribe((authState) => {
       this.authState = authState;
@@ -55,6 +57,7 @@ export class AuthService {
           ...userData.userPersonal,
           ...userData.activityAndGoal
         });
+        this.dailyMealsService.createDailyMealsData(uid);
       })
       .then(() => {
         this.router.navigate(['/login']);

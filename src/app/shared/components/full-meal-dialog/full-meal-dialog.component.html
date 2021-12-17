@@ -26,8 +26,8 @@
         <div class="calories-container">
           <mat-icon>local_fire_department</mat-icon>
           <span
-            >{{ mealData.nutrition.nutrients[0].amount | number: '1.0-0' }}
-            {{ mealData.nutrition.nutrients[0].unit }}</span
+            >{{ mealData.nutrients[0].amount | number: '1.0-0' }}
+            {{ mealData.nutrients[0].unit }}</span
           >
         </div>
         <div class="meal-type" *ngIf="mealData.diets.includes('vegan')">

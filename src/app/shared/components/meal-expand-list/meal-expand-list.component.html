@@ -10,8 +10,8 @@
           {{ meal.title }}
         </mat-panel-title>
         <mat-panel-description>
-          {{ meal.nutrition.nutrients[0].amount | number: '1.0-0' }}
-          {{ meal.nutrition.nutrients[0].unit }}
+          {{ meal.nutrients[0].amount | number: '1.0-0' }}
+          {{ meal.nutrients[0].unit }}
         </mat-panel-description>
       </mat-expansion-panel-header>
 
@@ -20,28 +20,28 @@
           <img src="{{ meal.image }}" />
         </div>
         <div class="macros-container" fxLayoutAlign="end center">
-          <mat-list fxFlex="60">
+          <mat-list fxFlex="70">
             <mat-list-item>
               <span fxFlex="50">Protein</span>
               <span class="macro-amount" fxFlex="50"
-                >{{ meal.nutrition.nutrients[8].amount | number: '1.0-0' }}
-                {{ meal.nutrition.nutrients[8].unit }}
+                >{{ meal.nutrients[3].amount | number: '1.0-0' }}
+                {{ meal.nutrients[3].unit }}
               </span>
               <mat-divider></mat-divider>
             </mat-list-item>
             <mat-list-item>
               <span fxFlex="50">Fat</span>
               <span class="macro-amount" fxFlex="50"
-                >{{ meal.nutrition.nutrients[1].amount | number: '1.0-0' }}
-                {{ meal.nutrition.nutrients[1].unit }}
+                >{{ meal.nutrients[1].amount | number: '1.0-0' }}
+                {{ meal.nutrients[1].unit }}
               </span>
               <mat-divider></mat-divider>
             </mat-list-item>
             <mat-list-item>
               <span fxFlex="50">Carbs</span>
               <span class="macro-amount" fxFlex="50"
-                >{{ meal.nutrition.nutrients[3].amount | number: '1.0-0' }}
-                {{ meal.nutrition.nutrients[3].unit }}</span
+                >{{ meal.nutrients[2].amount | number: '1.0-0' }}
+                {{ meal.nutrients[2].unit }}</span
               >
             </mat-list-item>
           </mat-list>
@@ -49,7 +49,12 @@
       </div>
 
       <mat-action-row class="buttons-container">
-        <button *ngIf="mode === 'mealList'" mat-button color="warn">
+        <button
+          *ngIf="mode === 'mealList'"
+          mat-button
+          color="warn"
+          (click)="deleteMeal(meal)"
+        >
           Delete
         </button>
         <button

@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DailyProgressService } from 'src/app/core/services/daily-progress/daily-progress.service';
 import { UserService } from 'src/app/core/services/user/user.service';
 import { UserData } from 'src/app/shared/interfaces/userData.model';
+import { ToastService } from 'src/app/shared/services/toasts/toast.service';
 
 @Component({
   selector: 'app-user-data',
@@ -44,7 +44,7 @@ export class UserDataComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private authService: AuthService,
     private dailyProgressService: DailyProgressService,
-    private toast: MatSnackBar
+    private toastService: ToastService
   ) {}
 
   ngOnInit(): void {
@@ -82,19 +82,11 @@ export class UserDataComponent implements OnInit, OnDestroy {
   }
 
   openToast(): void {
-    let infoMessage: string;
-
     if (this.userDataForm.valid) {
-      infoMessage = 'Saved successfully';
+      this.toastService.customToast('Saved successfully');
     } else {
-      infoMessage = 'Incorrect data';
+      this.toastService.customToast('Incorrect data');
     }
-
-    this.toast.open(infoMessage, 'X', {
-      horizontalPosition: 'right',
-      verticalPosition: 'top',
-      duration: 2500
-    });
   }
 
   private prepareForm(): void {
