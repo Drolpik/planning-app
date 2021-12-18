@@ -1,5 +1,10 @@
 @import '../../styles/variables.scss';
 
+.mat-list-item {
+  height: auto !important;
+  padding: 14px 0;
+}
+
 .content-container {
   width: 900px;
 

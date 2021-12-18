@@ -17,7 +17,7 @@
           formControlName="login"
           required
         />
-        <mat-error *ngIf="loginForm.get('login')?.hasError('email')"
+        <mat-error *ngIf="loginForm.get('login')?.hasError('pattern')"
           >Please enter a valid email</mat-error
         >
         <mat-error *ngIf="loginForm.get('login')?.hasError('required')"

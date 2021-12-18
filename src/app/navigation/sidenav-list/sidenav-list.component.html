@@ -15,10 +15,8 @@
     <mat-icon color="primary">login</mat-icon>
     <span class="nav-item-label">Login</span>
   </a>
-  <mat-list-item *ngIf="isAuth" (click)="onLogout()">
-    <button mat-icon-button>
-      <mat-icon color="primary">logout</mat-icon>
-      <span class="nav-item-label">Logout</span>
-    </button>
-  </mat-list-item>
+  <a *ngIf="isAuth" mat-list-item (click)="onLogout()">
+    <mat-icon color="primary">logout</mat-icon>
+    <span class="nav-item-label">Logout</span>
+  </a>
 </mat-nav-list>
