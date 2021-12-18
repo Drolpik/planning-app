@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { COMMA, ENTER, T } from '@angular/cdk/keycodes';
 import { MatChipInputEvent } from '@angular/material/chips';
 
 import { SearchMealsService } from 'src/app/core/services/search-meals/search-meals.service';
@@ -44,6 +44,8 @@ export class SearchMealsFormComponent implements OnInit {
     { value: 'Vegetarian' }
   ];
 
+  isLoading: boolean;
+
   constructor(
     private fb: FormBuilder,
     private searchMealsService: SearchMealsService
@@ -80,6 +82,7 @@ export class SearchMealsFormComponent implements OnInit {
 
   search(): void {
     this.searchResult = [];
+    this.isLoading = true;
 
     if (this.searchForm.valid) {
       this.formSubmitted = true;
@@ -87,13 +90,21 @@ export class SearchMealsFormComponent implements OnInit {
         this.searchMealsService
           .getMealsByAdvancedSearch(this.searchForm)
           .subscribe((meals: any) => {
+            this.isLoading = false;
             this.filterSearchData(meals.results);
+            if (meals.results.length === 0) {
+              this.formSubmitted = false;
+            }
           });
       } else {
         this.searchMealsService
           .getMealsByBasicSearch(this.searchForm)
           .subscribe((meals: any) => {
+            this.isLoading = false;
             this.filterSearchData(meals.results);
+            if (meals.results.length === 0) {
+              this.formSubmitted = false;
+            }
           });
       }
     } else {

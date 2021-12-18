@@ -70,9 +70,7 @@ export class AuthService {
   login(authData: AuthDataLogin) {
     this.afAuth
       .signInWithEmailAndPassword(authData.email, authData.password)
-      .then((result) => {
-        console.log(result);
-      })
+      .then((result) => {})
       .catch((error) => {
         console.log(error);
       });

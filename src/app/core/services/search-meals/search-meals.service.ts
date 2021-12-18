@@ -20,12 +20,17 @@ export class SearchMealsService {
     const ingredients = searchForm.value.ingredients.join(',');
 
     let searchQueries: string;
+    let minCaloriesQuery = '';
+
+    if (caloriesAmount - 100 > 0) {
+      minCaloriesQuery = `&minCalories=${caloriesAmount - 100}`;
+    }
 
     if (searchForm.value.ingredients.length === 0) {
-      searchQueries = `&maxCalories=${caloriesAmount}`;
+      searchQueries = `&maxCalories=${caloriesAmount}${minCaloriesQuery}`;
     } else {
       searchQueries =
-        searchQueries = `&maxCalories=${caloriesAmount}&includeIngredients=${ingredients}`;
+        searchQueries = `&maxCalories=${caloriesAmount}${minCaloriesQuery}&includeIngredients=${ingredients}`;
     }
     return this.http.get(`${this.ROOT_URL}${this.BASE_QUERY}${searchQueries}`);
   }
@@ -38,11 +43,17 @@ export class SearchMealsService {
 
   private setSearchQueries(searchValues: any) {
     let queries = '';
+    let minCaloriesQuery = '';
 
     for (const value in searchValues) {
       switch (value) {
         case 'caloriesAmount':
-          queries = queries.concat(`&maxCalories=${searchValues[value]}`);
+          searchValues[value] - 100 > 0
+            ? (minCaloriesQuery = `&minCalories=${searchValues[value] - 100}`)
+            : '';
+          queries = queries.concat(
+            `&maxCalories=${searchValues[value]}${minCaloriesQuery}`
+          );
           break;
         case 'ingredients':
           if (Array.isArray(searchValues[value])) {
