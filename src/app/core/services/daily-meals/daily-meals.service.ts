@@ -4,6 +4,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { arrayUnion, arrayRemove } from 'firebase/firestore';
 import { MealData } from 'src/app/shared/interfaces/mealsData.mode';
 import { ToastService } from 'src/app/shared/services/toasts/toast.service';
+import { DailyProgressService } from '../daily-progress/daily-progress.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,8 @@ import { ToastService } from 'src/app/shared/services/toasts/toast.service';
 export class DailyMealsService {
   constructor(
     private db: AngularFirestore,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private dailyProgressService: DailyProgressService
   ) {}
 
   createDailyMealsData(uid: string | undefined): void {

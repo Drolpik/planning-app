@@ -3,6 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DailyMealsService } from 'src/app/core/services/daily-meals/daily-meals.service';
+import { DailyProgressService } from 'src/app/core/services/daily-progress/daily-progress.service';
 import { MealData, MealItem, StepItem } from '../../interfaces/mealsData.mode';
 
 @Component({
@@ -25,6 +26,7 @@ export class FullMealDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<FullMealDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dailyMealsService: DailyMealsService,
+    private dailyProgressService: DailyProgressService,
     private authService: AuthService
   ) {}
 
@@ -57,6 +59,30 @@ export class FullMealDialogComponent implements OnInit {
     this.dailyMealsService.addNewMeal(
       this.authService.currentUserId,
       this.mealData
+    );
+    this.dailyProgressService.updateCaloriesAndMacros(
+      this.authService.currentUserId,
+      Math.round(this.mealData.nutrients[0].amount),
+      Math.round(this.mealData.nutrients[3].amount),
+      Math.round(this.mealData.nutrients[1].amount),
+      Math.round(this.mealData.nutrients[2].amount),
+      1
+    );
+    this.dialogRef.close();
+  }
+
+  deleteMeal(): void {
+    this.dailyMealsService.deleteMeal(
+      this.authService.currentUserId,
+      this.mealData
+    );
+    this.dailyProgressService.updateCaloriesAndMacros(
+      this.authService.currentUserId,
+      Math.round(this.mealData.nutrients[0].amount),
+      Math.round(this.mealData.nutrients[3].amount),
+      Math.round(this.mealData.nutrients[1].amount),
+      Math.round(this.mealData.nutrients[2].amount),
+      -1
     );
     this.dialogRef.close();
   }

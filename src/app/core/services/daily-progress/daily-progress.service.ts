@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { increment } from 'firebase/firestore';
 import { Subject } from 'rxjs';
 
 import { UserData } from 'src/app/shared/interfaces/userData.model';
-
 import { CommonsMethodsService } from 'src/app/shared/services/commons-methods/commons-methods.service';
 
 @Injectable({
@@ -61,5 +61,26 @@ export class DailyProgressService {
     this.db.doc(`dailyProgressData/${uid}`).update({
       currentCalories: calories
     });
+  }
+
+  updateCaloriesAndMacros(
+    uid: string,
+    calories: number,
+    protein: number,
+    fat: number,
+    carbs: number,
+    incrementOrDecrement: number
+  ): void {
+    this.db
+      .doc(`dailyProgressData/${uid}`)
+      .update({
+        currentCalories: increment(incrementOrDecrement * calories),
+        currentProtein: increment(incrementOrDecrement * protein),
+        currentFat: increment(incrementOrDecrement * fat),
+        currentCarbs: increment(incrementOrDecrement * carbs)
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }

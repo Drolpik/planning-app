@@ -90,6 +90,14 @@
 <mat-dialog-actions fxLayoutAlign="center">
   <button mat-button mat-dialog-close color="primary">Close</button>
   <button
+    *ngIf="mode === 'mealList'"
+    mat-raised-button
+    color="warn"
+    (click)="deleteMeal()"
+  >
+    Delete
+  </button>
+  <button
     *ngIf="mode === 'searchList'"
     mat-raised-button
     color="primary"

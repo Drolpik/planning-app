@@ -106,26 +106,22 @@
   </div>
 
   <div class="search-results" fxFlex="50">
-    <div fxLayout="column">
-      <h2 class="header">Results</h2>
-      <mat-card>
-        <div
-          class="results-container"
-          fxLayout="column"
-          fxLayoutAlign="center center"
-        >
-          <ng-container *ngIf="!formSubmitted; else mealsList">
+    <h2 class="header">Results</h2>
+    <mat-card>
+      <div class="results-container">
+        <ng-container *ngIf="!formSubmitted; else mealsList">
+          <div fxLayout="column" fxLayoutAlign="center center">
             <img class="no-data-img" src="../../../../assets/empty.svg" />
             <h3 class="no-results-header">No results</h3>
-          </ng-container>
-          <ng-template #mealsList>
-            <app-meal-expand-list
-              [data]="searchResult"
-              mode="searchList"
-            ></app-meal-expand-list>
-          </ng-template>
-        </div>
-      </mat-card>
-    </div>
+          </div>
+        </ng-container>
+        <ng-template #mealsList>
+          <app-meal-expand-list
+            [data]="searchResult"
+            mode="searchList"
+          ></app-meal-expand-list>
+        </ng-template>
+      </div>
+    </mat-card>
   </div>
 </div>
