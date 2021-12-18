@@ -1,5 +1,5 @@
-import { L } from '@angular/cdk/keycodes';
 import { Injectable } from '@angular/core';
+
 import { TrainingsData } from '../../interfaces/trainingsData.model';
 
 @Injectable({

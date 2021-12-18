@@ -2,8 +2,9 @@
 
 .meals-container {
   padding: 20px 0;
+
   .panel-container {
-    max-width: 480px;
+    max-width: 500px;
     width: 85%;
 
     .panel-title {
@@ -20,7 +21,7 @@
       }
 
       .macros-container {
-        min-width: 250px;
+        min-width: 175px;
 
         .macro-amount {
           text-align: center;

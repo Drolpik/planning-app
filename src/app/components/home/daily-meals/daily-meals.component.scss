@@ -1,20 +1,22 @@
 @import '../../../shared/styles/variables.scss';
 
-.section-header {
-  position: relative;
+.daily-meals-container {
+  .section-header {
+    position: relative;
 
-  @include underlineText(100px);
-}
-
-.results-container {
-  .empty-meals-img {
-    width: 200px;
-    height: 145px;
-    margin-bottom: 10px;
+    @include underlineText(100px);
   }
 
-  .empty-meals-header {
-    font-weight: 500;
-    margin: 0;
+  .results-container {
+    .empty-meals-img {
+      width: 200px;
+      height: 145px;
+      margin-bottom: 10px;
+    }
+
+    .empty-meals-header {
+      font-weight: 500;
+      margin: 0;
+    }
   }
 }

@@ -1,13 +1,11 @@
-<div>
+<div class="daily-meals-container">
   <h1 class="section-header">Your meals</h1>
-  <mat-card
-    class="results-container"
-    fxLayout="column"
-    fxLayoutAlign="center center"
-  >
+  <mat-card class="results-container">
     <ng-container *ngIf="mealsData.length === 0; else mealsList">
-      <img class="empty-meals-img" src="../../../../assets/empty.svg" />
-      <h3 class="empty-meals-header">No added meals</h3>
+      <div fxLayout="column" fxLayoutAlign="center center">
+        <img class="empty-meals-img" src="../../../../assets/empty.svg" />
+        <h3 class="empty-meals-header">No added meals</h3>
+      </div>
     </ng-container>
     <ng-template #mealsList>
       <app-meal-expand-list
