@@ -22,6 +22,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatSelectModule } from '@angular/material/select';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const materials = [
   MatFormFieldModule,
@@ -44,7 +45,8 @@ const materials = [
   MatTabsModule,
   MatSelectModule,
   MatAutocompleteModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatTooltipModule
 ];
 
 @NgModule({

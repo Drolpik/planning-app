@@ -1,0 +1,11 @@
+<span *ngIf="showTooltip; else showFullText">
+  {{ preparedText }}
+  <span class="text-container">
+    <span>{{ lastWord }}</span>
+    <span class="highlight-text" matTooltip="{{ fullText }}"> [...]</span>
+  </span>
+</span>
+
+<ng-template #showFullText>
+  {{ fullText }}
+</ng-template>

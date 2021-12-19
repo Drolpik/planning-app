@@ -35,6 +35,7 @@ import { TrainingsExpandListComponent } from './components/home/daily-trainings/
 import { TypeAndIntensityTabComponent } from './components/home/daily-trainings/training-tabs/type-and-intensity-tab/type-and-intensity-tab.component';
 import { ChooseFromListTabComponent } from './components/home/daily-trainings/training-tabs/choose-from-list-tab/choose-from-list-tab.component';
 import { PickForMeTabComponent } from './components/home/daily-trainings/training-tabs/pick-for-me-tab/pick-for-me-tab.component';
+import { TextTooltipComponent } from './shared/components/text-tooltip/text-tooltip.component';
 
 import { AuthService } from './core/services/auth/auth.service';
 import { environment } from '../environments/environment';
@@ -65,7 +66,8 @@ import { environment } from '../environments/environment';
     TrainingsExpandListComponent,
     TypeAndIntensityTabComponent,
     ChooseFromListTabComponent,
-    PickForMeTabComponent
+    PickForMeTabComponent,
+    TextTooltipComponent
   ],
   imports: [
     MaterialModule,

@@ -1,0 +1,10 @@
+@import '../../styles/variables.scss';
+
+.text-container {
+  white-space: nowrap;
+
+  .highlight-text {
+    color: $primaryColor;
+    cursor: pointer;
+  }
+}
