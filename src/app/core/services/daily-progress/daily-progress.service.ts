@@ -5,6 +5,7 @@ import { Subject } from 'rxjs';
 
 import { UserData } from 'src/app/shared/interfaces/userData.model';
 import { CommonsMethodsService } from 'src/app/shared/services/commons-methods/commons-methods.service';
+import { ToastService } from 'src/app/shared/services/toasts/toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class DailyProgressService {
 
   constructor(
     private commonsMethodsService: CommonsMethodsService,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private toastService: ToastService
   ) {}
 
   getDailyProgressData(uid: string) {
@@ -58,9 +60,19 @@ export class DailyProgressService {
   }
 
   updateCurrentCalories(uid: string, calories: number): void {
-    this.db.doc(`dailyProgressData/${uid}`).update({
-      currentCalories: calories
-    });
+    this.db
+      .doc(`dailyProgressData/${uid}`)
+      .update({
+        currentCalories: calories
+      })
+      .then(() => {
+        this.toastService.customToast('Calories successfully updated');
+      })
+      .catch((error) => {
+        this.toastService.customToast(
+          'An error occurred while updating calories'
+        );
+      });
   }
 
   updateCaloriesAndMacros(

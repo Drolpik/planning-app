@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
+import { ToastService } from 'src/app/shared/services/toasts/toast.service';
 import {
   AuthDataLogin,
   AuthDataSignUp
@@ -22,7 +23,8 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private userService: UserService,
     private dailyProgressService: DailyProgressService,
-    private dailyMealsService: DailyMealsService
+    private dailyMealsService: DailyMealsService,
+    private toastService: ToastService
   ) {
     this.afAuth.authState.subscribe((authState) => {
       this.authState = authState;
@@ -41,7 +43,7 @@ export class AuthService {
     });
   }
 
-  signUp(userData: AuthDataSignUp) {
+  signUp(userData: AuthDataSignUp): void {
     this.afAuth
       .createUserWithEmailAndPassword(
         userData.userAccount.email,
@@ -63,20 +65,35 @@ export class AuthService {
         this.router.navigate(['/login']);
       })
       .catch((error) => {
-        console.log(error);
+        if (error.code === 'auth/email-already-in-use') {
+          this.toastService.customToast(
+            'Email is already used by another account',
+            3000
+          );
+        } else {
+          this.toastService.customToast(
+            'An error occurred while registering',
+            3000
+          );
+        }
       });
   }
 
-  login(authData: AuthDataLogin) {
+  login(authData: AuthDataLogin): void {
     this.afAuth
       .signInWithEmailAndPassword(authData.email, authData.password)
-      .then((result) => {})
+      .then((result: any) => {})
       .catch((error) => {
-        console.log(error);
+        if (error.code === 'auth/wrong-password') {
+          this.toastService.customToast('Invalid email or password', 3000);
+        }
+        if (error.code === 'auth/user-not-found') {
+          this.toastService.customToast('User not found', 3000);
+        }
       });
   }
 
-  logout() {
+  logout(): void {
     this.afAuth.signOut();
   }
 

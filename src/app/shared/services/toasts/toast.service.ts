@@ -8,11 +8,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ToastService {
   constructor(private toast: MatSnackBar) {}
 
-  customToast(infoMessage: string): void {
+  customToast(infoMessage: string, duration?: number): void {
     this.toast.open(infoMessage, 'X', {
       horizontalPosition: 'right',
       verticalPosition: 'top',
-      duration: 2500
+      duration: duration ? duration : 2500
     });
   }
 }

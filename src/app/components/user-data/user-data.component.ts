@@ -73,18 +73,8 @@ export class UserDataComponent implements OnInit, OnDestroy {
             currentData as UserData
           );
         });
-
-      this.openToast();
     } else {
       this.userDataForm.markAllAsTouched();
-      this.openToast();
-    }
-  }
-
-  openToast(): void {
-    if (this.userDataForm.valid) {
-      this.toastService.customToast('Saved successfully');
-    } else {
       this.toastService.customToast('Incorrect data');
     }
   }
