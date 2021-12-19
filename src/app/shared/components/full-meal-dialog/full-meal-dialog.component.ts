@@ -1,17 +1,23 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DailyMealsService } from 'src/app/core/services/daily-meals/daily-meals.service';
 import { DailyProgressService } from 'src/app/core/services/daily-progress/daily-progress.service';
 import { MealData, MealItem, StepItem } from '../../interfaces/mealsData.mode';
+import { DeleteMealDialogComponent } from '../delete-meal-dialog/delete-meal-dialog.component';
 
 @Component({
   selector: 'app-full-meal-dialog',
   templateUrl: './full-meal-dialog.component.html',
   styleUrls: ['./full-meal-dialog.component.scss']
 })
-export class FullMealDialogComponent implements OnInit {
+export class FullMealDialogComponent implements OnInit, OnDestroy {
   mealData: MealData;
 
   macroList: { name: string; amount: number }[];
@@ -22,9 +28,12 @@ export class FullMealDialogComponent implements OnInit {
 
   mode: string;
 
+  dialogRefSub: Subscription;
+
   constructor(
-    public dialogRef: MatDialogRef<FullMealDialogComponent>,
+    public fullMealDialogRef: MatDialogRef<FullMealDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private dialog: MatDialog,
     private dailyMealsService: DailyMealsService,
     private dailyProgressService: DailyProgressService,
     private authService: AuthService
@@ -55,6 +64,10 @@ export class FullMealDialogComponent implements OnInit {
     ];
   }
 
+  ngOnDestroy(): void {
+    this.dialogRefSub.unsubscribe();
+  }
+
   addMeal(): void {
     this.dailyMealsService.addNewMeal(
       this.authService.currentUserId,
@@ -68,22 +81,17 @@ export class FullMealDialogComponent implements OnInit {
       Math.round(this.mealData.nutrients[2].amount),
       1
     );
-    this.dialogRef.close();
+    this.fullMealDialogRef.close();
   }
 
   deleteMeal(): void {
-    this.dailyMealsService.deleteMeal(
-      this.authService.currentUserId,
-      this.mealData
-    );
-    this.dailyProgressService.updateCaloriesAndMacros(
-      this.authService.currentUserId,
-      Math.round(this.mealData.nutrients[0].amount),
-      Math.round(this.mealData.nutrients[3].amount),
-      Math.round(this.mealData.nutrients[1].amount),
-      Math.round(this.mealData.nutrients[2].amount),
-      -1
-    );
-    this.dialogRef.close();
+    const deleteMealDialogRef = this.dialog.open(DeleteMealDialogComponent, {
+      width: '400px',
+      data: { mealData: this.mealData }
+    });
+
+    this.dialogRefSub = deleteMealDialogRef.afterClosed().subscribe(() => {
+      this.fullMealDialogRef.close();
+    });
   }
 }

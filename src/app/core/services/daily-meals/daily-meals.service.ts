@@ -5,6 +5,7 @@ import { arrayUnion, arrayRemove } from 'firebase/firestore';
 import { MealData } from 'src/app/shared/interfaces/mealsData.mode';
 import { ToastService } from 'src/app/shared/services/toasts/toast.service';
 import { DailyProgressService } from '../daily-progress/daily-progress.service';
+import { v4 as generateUuid } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,8 @@ export class DailyMealsService {
   }
 
   addNewMeal(uid: string, meal: MealData) {
+    meal['uuid'] = generateUuid();
+
     this.db
       .doc(`dailyMealsData/${uid}`)
       .update({

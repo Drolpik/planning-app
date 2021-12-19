@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { DailyMealsService } from 'src/app/core/services/daily-meals/daily-meals.service';
 import { DailyProgressService } from 'src/app/core/services/daily-progress/daily-progress.service';
 import { MealData } from '../../interfaces/mealsData.mode';
+import { DeleteMealDialogComponent } from '../delete-meal-dialog/delete-meal-dialog.component';
 import { FullMealDialogComponent } from '../full-meal-dialog/full-meal-dialog.component';
 
 @Component({
@@ -26,12 +27,10 @@ export class MealExpandListComponent {
     private authService: AuthService
   ) {}
 
-  openDialog(mealData: MealData): void {
-    const dialogRef = this.dialog.open(FullMealDialogComponent, {
+  openFullMealsDialog(mealData: MealData): void {
+    this.dialog.open(FullMealDialogComponent, {
       data: { mealData: mealData, mode: this.mode }
     });
-
-    // dialogRef.afterClosed().subscribe((result: any) => {});
   }
 
   addMeal(meal: MealData): void {
@@ -47,14 +46,9 @@ export class MealExpandListComponent {
   }
 
   deleteMeal(meal: MealData): void {
-    this.dailyMealsService.deleteMeal(this.authService.currentUserId, meal);
-    this.dailyProgressService.updateCaloriesAndMacros(
-      this.authService.currentUserId,
-      Math.round(meal.nutrients[0].amount),
-      Math.round(meal.nutrients[3].amount),
-      Math.round(meal.nutrients[1].amount),
-      Math.round(meal.nutrients[2].amount),
-      -1
-    );
+    this.dialog.open(DeleteMealDialogComponent, {
+      width: '400px',
+      data: { mealData: meal }
+    });
   }
 }

@@ -36,6 +36,7 @@ import { TypeAndIntensityTabComponent } from './components/home/daily-trainings/
 import { ChooseFromListTabComponent } from './components/home/daily-trainings/training-tabs/choose-from-list-tab/choose-from-list-tab.component';
 import { PickForMeTabComponent } from './components/home/daily-trainings/training-tabs/pick-for-me-tab/pick-for-me-tab.component';
 import { TextTooltipComponent } from './shared/components/text-tooltip/text-tooltip.component';
+import { DeleteMealDialogComponent } from './shared/components/delete-meal-dialog/delete-meal-dialog.component';
 
 import { AuthService } from './core/services/auth/auth.service';
 import { environment } from '../environments/environment';
@@ -67,7 +68,8 @@ import { environment } from '../environments/environment';
     TypeAndIntensityTabComponent,
     ChooseFromListTabComponent,
     PickForMeTabComponent,
-    TextTooltipComponent
+    TextTooltipComponent,
+    DeleteMealDialogComponent
   ],
   imports: [
     MaterialModule,

@@ -1,4 +1,5 @@
 export interface MealData {
+  uuid?: string;
   diets: string[];
   image: string;
   ingredients: MealItem[];
