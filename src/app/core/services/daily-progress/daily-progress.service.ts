@@ -71,7 +71,7 @@ export class DailyProgressService {
       })
       .catch((error) => {
         this.toastService.customToast(
-          'An error occurred while updating cburned calories'
+          'An error occurred while updating burned calories'
         );
       });
   }
