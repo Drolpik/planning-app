@@ -11,7 +11,7 @@
         [value]="progress.progress"
       ></mat-spinner>
       <h2 class="header-progress">{{ progress.name }}</h2>
-      <p>
+      <p class="progress-info">
         <span
           [ngClass]="
             progress.currentValue > progress.limit ? 'progress-exceeded' : ''
@@ -20,6 +20,17 @@
         </span>
         of {{ progress.limit }}
         <span>{{ progress.name === 'Calories' ? 'kcal' : 'g' }}</span>
+
+        <span
+          class="burnedCalories"
+          *ngIf="burnedCalories > 0 && progress.name === 'Calories'"
+        >
+          <mat-icon>local_fire_department</mat-icon>
+          <span> {{ burnedCalories }} kcal </span>
+        </span>
+        <ng-container *ngIf="burnedCalories > 0 && progress.name != 'Calories'">
+          <div class="emptyLine"></div>
+        </ng-container>
       </p>
     </div>
     <mat-divider *ngIf="!last" [vertical]="true"></mat-divider>

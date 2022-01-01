@@ -16,8 +16,6 @@ export class TrainingsExpandListComponent implements OnInit {
 
   @Input() caloriesToBurn: number;
 
-  currentCalories: number;
-
   userWeight = 78;
 
   panelOpenState = false;
@@ -35,12 +33,6 @@ export class TrainingsExpandListComponent implements OnInit {
       .subscribe((data: any) => {
         this.userWeight = data.weight;
       });
-
-    this.dailyProgressService
-      .getDailyProgressData(this.authService.currentUserId)
-      .subscribe((data: any) => {
-        this.currentCalories = data.currentCalories;
-      });
   }
 
   calculateWorkoutTime(training: TrainingsData): number {
@@ -52,9 +44,9 @@ export class TrainingsExpandListComponent implements OnInit {
   }
 
   selectExercise(selectedTraining: TrainingsData): void {
-    this.dailyProgressService.updateCurrentCalories(
+    this.dailyProgressService.updateBurnedCalories(
       this.authService.currentUserId,
-      this.currentCalories - this.caloriesToBurn
+      this.caloriesToBurn
     );
   }
 }

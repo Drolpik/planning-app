@@ -7,8 +7,26 @@
     margin: 10px 0 3px;
   }
 
-  .progress-exceeded {
-    color: $warnColor;
-    font-weight: bold;
+  .progress-info {
+    margin-bottom: 0;
+
+    .progress-exceeded {
+      color: $warnColor;
+      font-weight: bold;
+    }
+
+    .burnedCalories {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .mat-icon {
+        font-size: 20px;
+      }
+    }
+
+    .emptyLine {
+      height: 24px;
+    }
   }
 }

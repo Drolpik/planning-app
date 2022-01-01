@@ -30,6 +30,8 @@ export class DailyProgressComponent implements OnInit, OnDestroy {
 
   dailyProgressDataSub: Subscription;
 
+  burnedCalories = 0;
+
   constructor(
     private authService: AuthService,
     private dailyProgressService: DailyProgressService
@@ -68,6 +70,8 @@ export class DailyProgressComponent implements OnInit, OnDestroy {
 
     this.carbsLimit = currentData.carbsLimit;
     this.currentCarbs = currentData.currentCarbs;
+
+    this.burnedCalories = currentData.burnedCalories;
   }
 
   setDailyProgress(): void {
@@ -107,8 +111,9 @@ export class DailyProgressComponent implements OnInit, OnDestroy {
   }
 
   isTrainingNeeded(): void {
-    if (this.currentCalories > this.caloriesLimit) {
-      const caloriesToBurn = this.currentCalories - this.caloriesLimit;
+    if (this.currentCalories - this.burnedCalories > this.caloriesLimit) {
+      const caloriesToBurn =
+        this.currentCalories - this.burnedCalories - this.caloriesLimit;
       this.dailyProgressService.caloriesExceeded.next({
         caloriesExceededStatus: true,
         caloriesToBurn: caloriesToBurn

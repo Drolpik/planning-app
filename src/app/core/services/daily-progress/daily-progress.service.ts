@@ -39,7 +39,8 @@ export class DailyProgressService {
       fatLimit: macrosPercentages.fatLimit,
       currentFat: 0,
       carbsLimit: macrosPercentages.carbsLimit,
-      currentCarbs: 0
+      currentCarbs: 0,
+      burnedCalories: 0
     });
   }
 
@@ -59,18 +60,18 @@ export class DailyProgressService {
     });
   }
 
-  updateCurrentCalories(uid: string, calories: number): void {
+  updateBurnedCalories(uid: string, caloriesToBurn: number): void {
     this.db
       .doc(`dailyProgressData/${uid}`)
       .update({
-        currentCalories: calories
+        burnedCalories: increment(caloriesToBurn)
       })
       .then(() => {
-        this.toastService.customToast('Calories successfully updated');
+        this.toastService.customToast('Burned calories successfully updated');
       })
       .catch((error) => {
         this.toastService.customToast(
-          'An error occurred while updating calories'
+          'An error occurred while updating cburned calories'
         );
       });
   }
